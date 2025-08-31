@@ -2,6 +2,7 @@ import './App.css'
 import { Login } from './components/Login'
 import { Dashboard } from './components/Dashboard'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
+import { SettingsProvider } from './contexts/SettingsContext'
 
 function AppContent() {
   const { user, loading, signOut } = useAuth()
@@ -35,7 +36,9 @@ function AppContent() {
 function App() {
   return (
     <AuthProvider>
-      <AppContent />
+      <SettingsProvider>
+        <AppContent />
+      </SettingsProvider>
     </AuthProvider>
   )
 }

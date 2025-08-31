@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { LogOut } from 'lucide-react'
 import { AppSidebar } from './app-sidebar'
+import { Settings } from './Settings'
+import { CoffeeRecipesManager } from './coffee/CoffeeRecipesManager'
+import { ComandasManager } from './comandas/ComandasManager'
 import { SidebarProvider, SidebarInset, SidebarTrigger } from '@/components/ui/sidebar'
 
 interface DashboardProps {
@@ -33,434 +36,7 @@ export function Dashboard({ onLogout }: DashboardProps) {
           </div>
         )
       case 'recetas':
-        return (
-          <div className="space-y-6">
-            <div className="flex justify-between items-center">
-              <div>
-                <h1 className="text-3xl font-bold mb-2">Recetas de Café de Especialidad</h1>
-                <p className="text-gray-600">Sistema técnico de gestión de extracciones y parámetros SCA</p>
-              </div>
-              <button className="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors flex items-center gap-2">
-                <span>+</span>
-                Nueva Receta
-              </button>
-            </div>
-
-            {/* Métricas Rápidas */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="bg-white p-4 rounded-lg border border-amber-200">
-                <div className="text-sm text-amber-600 font-medium">Total Recetas</div>
-                <div className="text-2xl font-bold text-gray-900">24</div>
-                <div className="text-xs text-gray-500">8 Espresso, 16 Filtro</div>
-              </div>
-              <div className="bg-white p-4 rounded-lg border border-green-200">
-                <div className="text-sm text-green-600 font-medium">Rendimiento Promedio</div>
-                <div className="text-2xl font-bold text-gray-900">19.8%</div>
-                <div className="text-xs text-gray-500">Óptimo SCA: 18-22%</div>
-              </div>
-              <div className="bg-white p-4 rounded-lg border border-blue-200">
-                <div className="text-sm text-blue-600 font-medium">TDS Promedio</div>
-                <div className="text-2xl font-bold text-gray-900">1.35%</div>
-                <div className="text-xs text-gray-500">Objetivo: 1.15-1.45%</div>
-              </div>
-              <div className="bg-white p-4 rounded-lg border border-purple-200">
-                <div className="text-sm text-purple-600 font-medium">Costo/Bebida</div>
-                <div className="text-2xl font-bold text-gray-900">$1.85</div>
-                <div className="text-xs text-gray-500">28% del precio</div>
-              </div>
-            </div>
-
-            {/* Filtros y Búsqueda */}
-            <div className="bg-white p-4 rounded-lg border">
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="flex-1">
-                  <input 
-                    type="text" 
-                    placeholder="Buscar recetas por origen, método, notas..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
-                  />
-                </div>
-                <div className="flex gap-2">
-                  <select className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
-                    <option>Todos los Métodos</option>
-                    <option>Espresso</option>
-                    <option>V60</option>
-                    <option>Chemex</option>
-                    <option>Aeropress</option>
-                    <option>French Press</option>
-                    <option>Cold Brew</option>
-                  </select>
-                  <select className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
-                    <option>Todos los Orígenes</option>
-                    <option>Brasil</option>
-                    <option>Colombia</option>
-                    <option>Etiopía</option>
-                    <option>Guatemala</option>
-                    <option>Perú</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            {/* Lista de Recetas */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Receta Espresso */}
-              <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="bg-gradient-to-r from-amber-500 to-orange-600 p-4 text-white">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-lg font-semibold">Espresso House Blend</h3>
-                      <p className="text-sm opacity-90">Brasil Santos + Colombia Huila</p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <span className="bg-white/20 px-2 py-1 rounded text-xs">Espresso</span>
-                        <span className="bg-white/20 px-2 py-1 rounded text-xs">Score: 84.5</span>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm opacity-90">Rendimiento</div>
-                      <div className="text-xl font-bold">20.2%</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Dosis:</span>
-                        <span className="font-medium">18.5g</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Yield:</span>
-                        <span className="font-medium">37g</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Tiempo:</span>
-                        <span className="font-medium">28s</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Ratio:</span>
-                        <span className="font-medium">1:2.0</span>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Temp:</span>
-                        <span className="font-medium">93°C</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">TDS:</span>
-                        <span className="font-medium">10.8%</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Presión:</span>
-                        <span className="font-medium">9 bar</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Costo:</span>
-                        <span className="font-medium">$1.75</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="border-t pt-3">
-                    <div className="text-xs text-gray-500 mb-2">Notas de Cata:</div>
-                    <p className="text-sm text-gray-700">"Chocolate amargo, nuez tostada, final dulce. Cuerpo cremoso con acidez balanceada."</p>
-                  </div>
-                  <div className="flex justify-between items-center mt-4">
-                    <div className="text-xs text-gray-500">
-                      Última actualización: Hace 3 días
-                    </div>
-                    <div className="flex gap-2">
-                      <button className="text-blue-600 hover:text-blue-800 text-sm">Editar</button>
-                      <button className="text-green-600 hover:text-green-800 text-sm">Preparar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Receta V60 */}
-              <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="bg-gradient-to-r from-blue-500 to-cyan-600 p-4 text-white">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-lg font-semibold">Etiopía Yirgacheffe</h3>
-                      <p className="text-sm opacity-90">Natural Process - Altitude 1,800m</p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <span className="bg-white/20 px-2 py-1 rounded text-xs">V60</span>
-                        <span className="bg-white/20 px-2 py-1 rounded text-xs">Score: 88.0</span>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm opacity-90">Rendimiento</div>
-                      <div className="text-xl font-bold">21.5%</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Café:</span>
-                        <span className="font-medium">22g</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Agua:</span>
-                        <span className="font-medium">350g</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Tiempo:</span>
-                        <span className="font-medium">3:20</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Ratio:</span>
-                        <span className="font-medium">1:15.9</span>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Temp:</span>
-                        <span className="font-medium">94°C</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">TDS:</span>
-                        <span className="font-medium">1.42%</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Molienda:</span>
-                        <span className="font-medium">Medium</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Costo:</span>
-                        <span className="font-medium">$2.20</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="border-t pt-3">
-                    <div className="text-xs text-gray-500 mb-2">Protocolo de Vertido:</div>
-                    <p className="text-sm text-gray-700">"Bloom 44g/30s → 150g/1:15 → 250g/2:10 → 350g/2:45. Agitación suave post-bloom."</p>
-                  </div>
-                  <div className="border-t pt-3 mt-3">
-                    <div className="text-xs text-gray-500 mb-2">Perfil Sensorial:</div>
-                    <p className="text-sm text-gray-700">"Bergamota, té negro, chocolate blanco. Acidez brillante, cuerpo medio, final floral."</p>
-                  </div>
-                  <div className="flex justify-between items-center mt-4">
-                    <div className="text-xs text-gray-500">
-                      Última actualización: Hace 1 día
-                    </div>
-                    <div className="flex gap-2">
-                      <button className="text-blue-600 hover:text-blue-800 text-sm">Editar</button>
-                      <button className="text-green-600 hover:text-green-800 text-sm">Preparar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Receta Cold Brew */}
-              <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="bg-gradient-to-r from-purple-500 to-indigo-600 p-4 text-white">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-lg font-semibold">Cold Brew Concentrate</h3>
-                      <p className="text-sm opacity-90">Guatemala Antigua + Brasil Cerrado</p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <span className="bg-white/20 px-2 py-1 rounded text-xs">Cold Brew</span>
-                        <span className="bg-white/20 px-2 py-1 rounded text-xs">24h Batch</span>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm opacity-90">Rendimiento</div>
-                      <div className="text-xl font-bold">22.8%</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Café:</span>
-                        <span className="font-medium">500g</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Agua:</span>
-                        <span className="font-medium">3L</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Tiempo:</span>
-                        <span className="font-medium">18h</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Ratio:</span>
-                        <span className="font-medium">1:6</span>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Temp:</span>
-                        <span className="font-medium">Ambiente</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">TDS Conc:</span>
-                        <span className="font-medium">3.8%</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Dilución:</span>
-                        <span className="font-medium">1:1</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Yield:</span>
-                        <span className="font-medium">~40 porciones</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="border-t pt-3">
-                    <div className="text-xs text-gray-500 mb-2">Proceso:</div>
-                    <p className="text-sm text-gray-700">"Molienda gruesa (800-900μm). Inmersión total 18h. Filtrado doble: malla gruesa + papel."</p>
-                  </div>
-                  <div className="flex justify-between items-center mt-4">
-                    <div className="text-xs text-gray-500">
-                      Próximo batch: En 2 días
-                    </div>
-                    <div className="flex gap-2">
-                      <button className="text-blue-600 hover:text-blue-800 text-sm">Editar</button>
-                      <button className="text-orange-600 hover:text-orange-800 text-sm">Iniciar Batch</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Receta Aeropress */}
-              <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="bg-gradient-to-r from-green-500 to-teal-600 p-4 text-white">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="text-lg font-semibold">Perú Amazonas</h3>
-                      <p className="text-sm opacity-90">Washed Process - Cooperativa</p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <span className="bg-white/20 px-2 py-1 rounded text-xs">Aeropress</span>
-                        <span className="bg-white/20 px-2 py-1 rounded text-xs">Invertido</span>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm opacity-90">Rendimiento</div>
-                      <div className="text-xl font-bold">19.8%</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Café:</span>
-                        <span className="font-medium">17g</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Agua:</span>
-                        <span className="font-medium">250g</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Tiempo:</span>
-                        <span className="font-medium">2:30</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Ratio:</span>
-                        <span className="font-medium">1:14.7</span>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Temp:</span>
-                        <span className="font-medium">87°C</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">TDS:</span>
-                        <span className="font-medium">1.28%</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Presión:</span>
-                        <span className="font-medium">30s press</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-gray-600">Costo:</span>
-                        <span className="font-medium">$1.95</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="border-t pt-3">
-                    <div className="text-xs text-gray-500 mb-2">Técnica:</div>
-                    <p className="text-sm text-gray-700">"Invertido: 100g bloom 30s → 200g agitar → 250g 1:30 → voltear → press 30s"</p>
-                  </div>
-                  <div className="flex justify-between items-center mt-4">
-                    <div className="text-xs text-gray-500">
-                      Actualizado: Hace 5 días
-                    </div>
-                    <div className="flex gap-2">
-                      <button className="text-blue-600 hover:text-blue-800 text-sm">Editar</button>
-                      <button className="text-green-600 hover:text-green-800 text-sm">Preparar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Calculadora de Extracción */}
-            <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-6 border">
-              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <span>🧮</span>
-                Calculadora de Extracción SCA
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white p-4 rounded-lg">
-                  <h4 className="font-medium mb-3">Parámetros de Entrada</h4>
-                  <div className="space-y-3">
-                    <div>
-                      <label className="text-sm text-gray-600">Dosis (g)</label>
-                      <input type="number" className="w-full mt-1 px-3 py-2 border rounded-lg" defaultValue="18.5" />
-                    </div>
-                    <div>
-                      <label className="text-sm text-gray-600">Yield (g)</label>
-                      <input type="number" className="w-full mt-1 px-3 py-2 border rounded-lg" defaultValue="37" />
-                    </div>
-                    <div>
-                      <label className="text-sm text-gray-600">TDS (%)</label>
-                      <input type="number" step="0.1" className="w-full mt-1 px-3 py-2 border rounded-lg" defaultValue="10.8" />
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white p-4 rounded-lg">
-                  <h4 className="font-medium mb-3">Cálculos Automáticos</h4>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-sm text-gray-600">Ratio:</span>
-                      <span className="font-medium">1:2.0</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm text-gray-600">Extracción:</span>
-                      <span className="font-medium text-green-600">21.6%</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm text-gray-600">Fuerza:</span>
-                      <span className="font-medium text-blue-600">10.8%</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm text-gray-600">Status:</span>
-                      <span className="text-green-600 text-sm">✅ Óptimo</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white p-4 rounded-lg">
-                  <h4 className="font-medium mb-3">Recomendaciones</h4>
-                  <div className="space-y-2">
-                    <div className="text-sm text-green-600">✅ Extracción en rango SCA</div>
-                    <div className="text-sm text-green-600">✅ TDS óptimo para espresso</div>
-                    <div className="text-sm text-amber-600">⚡ Considerar +0.5g dosis</div>
-                    <div className="text-sm text-gray-500">📊 Parámetros balanceados</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )
+        return <CoffeeRecipesManager />
       case 'stock':
         return (
           <div>
@@ -792,12 +368,7 @@ export function Dashboard({ onLogout }: DashboardProps) {
           </div>
         )
       case 'comandas':
-        return (
-          <div>
-            <h1 className="text-3xl font-bold mb-6">Comandas</h1>
-            <p className="text-gray-600">Gestiona pedidos y comandas de clientes.</p>
-          </div>
-        )
+        return <ComandasManager />
       case 'equipo':
         return (
           <div>
@@ -806,12 +377,268 @@ export function Dashboard({ onLogout }: DashboardProps) {
           </div>
         )
       case 'ajustes':
+        return <Settings />
+      
+      // Secciones de Más de Bourbon
+      case 'bourbon-app':
         return (
-          <div>
-            <h1 className="text-3xl font-bold mb-6">Ajustes</h1>
-            <p className="text-gray-600">Configuración de la aplicación.</p>
+          <div className="space-y-6">
+            <div>
+              <h1 className="text-3xl font-bold mb-2">Bourbon App</h1>
+              <p className="text-gray-600">Aplicación móvil para gestión de cafeterías</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white p-6 rounded-lg border border-gray-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                    <span className="text-2xl">📱</span>
+                  </div>
+                  <h3 className="text-lg font-semibold">App para Clientes</h3>
+                </div>
+                <p className="text-gray-600 mb-4">Permite a tus clientes hacer pedidos, ver el menú y gestionar su cuenta desde su teléfono.</p>
+                <button className="w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition-colors">
+                  Descargar para Clientes
+                </button>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg border border-gray-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <span className="text-2xl">👨‍💼</span>
+                  </div>
+                  <h3 className="text-lg font-semibold">App para Personal</h3>
+                </div>
+                <p className="text-gray-600 mb-4">Herramienta para que tu equipo gestione pedidos, inventario y tareas desde cualquier lugar.</p>
+                <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                  Descargar para Personal
+                </button>
+              </div>
+            </div>
           </div>
         )
+
+      case 'comandas-app':
+        return (
+          <div className="space-y-6">
+            <div>
+              <h1 className="text-3xl font-bold mb-2">Comandas App</h1>
+              <p className="text-gray-600">Sistema especializado para gestión de comandas y pedidos</p>
+            </div>
+            <div className="bg-gradient-to-r from-orange-500 to-red-600 text-white p-8 rounded-lg">
+              <h2 className="text-2xl font-bold mb-4">Sistema de Comandas Profesional</h2>
+              <p className="mb-6">Optimiza el flujo de trabajo de tu cocina con nuestro sistema especializado de comandas.</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="text-center">
+                  <div className="text-3xl mb-2">⚡</div>
+                  <div className="font-semibold">Rápido</div>
+                  <div className="text-sm opacity-90">Gestión en tiempo real</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl mb-2">📊</div>
+                  <div className="font-semibold">Eficiente</div>
+                  <div className="text-sm opacity-90">Reduce tiempos de espera</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl mb-2">💡</div>
+                  <div className="font-semibold">Inteligente</div>
+                  <div className="text-sm opacity-90">Analytics integrados</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+
+      case 'app-comunidad':
+        return (
+          <div className="space-y-6">
+            <div>
+              <h1 className="text-3xl font-bold mb-2">App Comunidad</h1>
+              <p className="text-gray-600">Conecta con otros profesionales del café y la gastronomía</p>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="bg-white rounded-lg border border-gray-200 p-6">
+                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  <span className="text-2xl">👥</span>
+                  Red de Profesionales
+                </h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">✓</span>
+                    Conecta con baristas y chefs profesionales
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">✓</span>
+                    Comparte recetas y técnicas
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">✓</span>
+                    Participa en eventos y competencias
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="bg-white rounded-lg border border-gray-200 p-6">
+                <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  <span className="text-2xl">📚</span>
+                  Centro de Conocimiento
+                </h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">✓</span>
+                    Cursos especializados
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">✓</span>
+                    Biblioteca de recursos
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">✓</span>
+                    Certificaciones profesionales
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )
+
+      // Secciones de Soporte
+      case 'software-medida':
+        return (
+          <div className="space-y-6">
+            <div>
+              <h1 className="text-3xl font-bold mb-2">Software a Medida</h1>
+              <p className="text-gray-600">Desarrollo personalizado para tu negocio gastronómico</p>
+            </div>
+            <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-8 rounded-lg mb-8">
+              <h2 className="text-2xl font-bold mb-4">¿Necesitas algo específico?</h2>
+              <p className="mb-6">Desarrollamos soluciones tecnológicas personalizadas para restaurantes, cafeterías y negocios gastronómicos.</p>
+              <button className="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                Solicitar Cotización
+              </button>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-lg border border-gray-200">
+                <div className="text-3xl mb-4">🖥️</div>
+                <h3 className="font-semibold mb-2">Sistemas POS</h3>
+                <p className="text-gray-600 text-sm">Puntos de venta personalizados</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg border border-gray-200">
+                <div className="text-3xl mb-4">📱</div>
+                <h3 className="font-semibold mb-2">Apps Móviles</h3>
+                <p className="text-gray-600 text-sm">Aplicaciones nativas para tu marca</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg border border-gray-200">
+                <div className="text-3xl mb-4">🌐</div>
+                <h3 className="font-semibold mb-2">Plataformas Web</h3>
+                <p className="text-gray-600 text-sm">Sitios web y sistemas online</p>
+              </div>
+            </div>
+          </div>
+        )
+
+      case 'soporte':
+        return (
+          <div className="space-y-6">
+            <div>
+              <h1 className="text-3xl font-bold mb-2">Soporte Técnico</h1>
+              <p className="text-gray-600">Estamos aquí para ayudarte con cualquier problema técnico</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-green-50 border border-green-200 p-6 rounded-lg">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white">
+                    <span>💬</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-green-800">Chat en Vivo</h3>
+                </div>
+                <p className="text-green-700 mb-4">Disponible 24/7 para resolver tus dudas inmediatamente</p>
+                <button className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                  Iniciar Chat
+                </button>
+              </div>
+              
+              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white">
+                    <span>📧</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-blue-800">Soporte por Email</h3>
+                </div>
+                <p className="text-blue-700 mb-4">Envíanos tu consulta y te responderemos en menos de 2 horas</p>
+                <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                  Enviar Email
+                </button>
+              </div>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg border border-gray-200">
+              <h3 className="text-lg font-semibold mb-4">Estado del Sistema</h3>
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <span className="text-green-600 font-medium">Todos los servicios funcionando correctamente</span>
+              </div>
+              <p className="text-gray-500 text-sm">Última verificación: hace 2 minutos</p>
+            </div>
+          </div>
+        )
+
+      case 'centro-ayuda':
+        return (
+          <div className="space-y-6">
+            <div>
+              <h1 className="text-3xl font-bold mb-2">Centro de Ayuda</h1>
+              <p className="text-gray-600">Encuentra respuestas a las preguntas más frecuentes</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg border border-gray-200 mb-6">
+              <div className="flex items-center gap-4 mb-4">
+                <input 
+                  type="text" 
+                  placeholder="¿Qué necesitas saber?"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
+                />
+                <button className="bg-amber-600 text-white px-6 py-2 rounded-lg hover:bg-amber-700 transition-colors">
+                  Buscar
+                </button>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-lg border border-gray-200">
+                <div className="text-3xl mb-4">🚀</div>
+                <h3 className="font-semibold mb-2">Primeros Pasos</h3>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li>• Configuración inicial</li>
+                  <li>• Crear tu primera receta</li>
+                  <li>• Gestionar inventario</li>
+                </ul>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg border border-gray-200">
+                <div className="text-3xl mb-4">⚙️</div>
+                <h3 className="font-semibold mb-2">Configuración</h3>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li>• Personalizar colores</li>
+                  <li>• Configurar facturación</li>
+                  <li>• Gestionar usuarios</li>
+                </ul>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg border border-gray-200">
+                <div className="text-3xl mb-4">🔧</div>
+                <h3 className="font-semibold mb-2">Solución de Problemas</h3>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li>• Problemas de login</li>
+                  <li>• Errores comunes</li>
+                  <li>• Recuperar datos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )
+
       default:
         return <div>Sección no encontrada</div>
     }
