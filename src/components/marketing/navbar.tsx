@@ -4,10 +4,12 @@ import { cn } from "@/functions";
 import { ArrowRightIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from 'react';
+import Image from "next/image";
 import Icons from "../global/icons";
 import Wrapper from "../global/wrapper";
 import { Button } from "../ui/button";
 import { ThemeToggle } from "../ui/theme-toggle";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import Menu from "./menu";
 import MobileMenu from "./mobile-menu";
 
@@ -16,6 +18,7 @@ const Navbar = () => {
     const user = null; // Mock user for development
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [lang, setLang] = useState<string>("es-AR");
 
     useEffect(() => {
         if (isOpen) {
@@ -44,7 +47,14 @@ const Navbar = () => {
                     <div className="flex items-center justify-between w-full sticky mt-[7px] lg:mt-auto mb-auto inset-x-0">
                         <div className="flex items-center flex-1 lg:flex-none pl-1">
                             <Link href="/" className="text-lg font-semibold text-foreground">
-                                <Icons.icon className="w-auto h-5" />
+                                <Image
+                                    src="/nb/bourbon icon.png"
+                                    alt="Bourbon"
+                                    width={24}
+                                    height={24}
+                                    className="h-5 w-auto"
+                                    priority
+                                />
                             </Link>
                             <div className="items-center hidden ml-4 lg:flex">
                                 <Menu />
@@ -72,6 +82,27 @@ const Navbar = () => {
                                     </Button>
                                 </>
                             )}
+                            {/* Language Dropdown */}
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button size="icon" variant="ghost" className="w-9 h-9">
+                                        <span className="text-lg" aria-label="Idioma">
+                                            {lang === "es-AR" ? "🇦🇷" : lang === "en-US" ? "🇺🇸" : "🇧🇷"}
+                                        </span>
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end" className="min-w-[10rem]">
+                                    <DropdownMenuItem onClick={() => setLang("es-AR")}>
+                                        <span className="mr-2">🇦🇷</span> Español (AR)
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => setLang("en-US")}>
+                                        <span className="mr-2">🇺🇸</span> English (US)
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => setLang("pt-BR")}>
+                                        <span className="mr-2">🇧🇷</span> Português (BR)
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
                             <ThemeToggle />
                             <Button
                                 size="icon"

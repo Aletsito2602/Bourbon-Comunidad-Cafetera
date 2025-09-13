@@ -2,6 +2,7 @@ import { FOOTER_LINKS } from "@/constants";
 import Link from "next/link";
 import Container from "../global/container";
 import Icons from "../global/icons";
+import Image from "next/image";
 import Wrapper from "../global/wrapper";
 import { Button } from "../ui/button";
 import { Particles } from "../ui/particles";
@@ -20,9 +21,16 @@ const Footer = () => {
                     />
                     <div className="flex flex-col items-start max-w-48">
                         <div className="flex items-center gap-2">
-                            <Icons.icon className="w-5 h-5" />
+                            <Image
+                                src="/nb/bourbon icon.png"
+                                alt="Bourbon"
+                                width={20}
+                                height={20}
+                                className="h-5 w-auto"
+                                priority
+                            />
                             <span className="text-xl font-medium">
-                                Luro
+                                Bourbon
                             </span>
                         </div>
                         <p className="text-base max-w mt-4">
@@ -57,7 +65,7 @@ const Footer = () => {
             <Container>
                 <Wrapper className="pt-10 flex items-center justify-between relative">
                     <p className="text-sm text-secondary-foreground">
-                        &copy; {new Date().getFullYear()} Luro. Todos los derechos reservados.
+                        &copy; {new Date().getFullYear()} Bourbon. Todos los derechos reservados.
                     </p>
                     <div className="flex items-center gap-4">
                         <Link href="#" className="p-1">

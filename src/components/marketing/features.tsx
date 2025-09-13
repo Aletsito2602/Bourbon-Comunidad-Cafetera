@@ -17,7 +17,7 @@ const Features = () => {
                         Crea contenido más rápido <br /> y más inteligente
                     </h2>
                     <p className="text-base md:text-lg text-center text-accent-foreground/80 mt-6">
-                        Transforma tu estrategia de redes sociales con las características de vanguardia de Luro AI, diseñadas para optimizar tu creación de contenido y engagement como nunca antes.
+                        Transforma la gestión de tu cafetería con herramientas de vanguardia: control de stock e insumos, recetas estandarizadas, costos y precios precisos, calidad constante y analíticas con IA.
                     </p>
                 </div>
             </Container>
@@ -34,7 +34,7 @@ const Features = () => {
                                 </div>
                             </MagicCard>
                             <MagicCard particles={true} className="flex flex-col items-start w-full bg-primary/[0.08]">
-                                <div className="bento-card w-full flex-row gap-6">
+                                <div className="bento-card w-full flex-col lg:flex-row gap-6">
                                     <div className="w-full h-40">
                                         <Images.analytics className="w-full h-full" />
                                     </div>
@@ -53,7 +53,7 @@ const Features = () => {
                     <Container>
                         <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-5 lg:gap-5">
                             <MagicCard particles={true} className="flex flex-col items-start w-full row-span-1 bg-primary/[0.08]">
-                                <div className="bento-card w-full flex-row gap-6">
+                                <div className="bento-card w-full flex-col lg:flex-row gap-6">
                                     <div className="w-full h-52 relative">
                                         <Images.ideation className="w-full h-full" />
                                         <div className="w-40 h-40 rounded-full bg-primary/10 blur-3xl -z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
@@ -68,12 +68,12 @@ const Features = () => {
                                     </div>
                                 </div>
                             </MagicCard>
-                            <div className="grid grid-rows gap-5 lg:gap-5">
-                                <MagicCard particles={true} className="flex flex-col items-start w-full row-span- row-start-[0.5] h-32 bg-primary/[0.08]">
+                            <div className="grid grid-cols-1 gap-5 lg:gap-5">
+                                <MagicCard particles={true} className="flex flex-col items-start w-full h-32 bg-primary/[0.08]">
                                     <div className="bento-card w-full relative items-center justify-center">
                                         <div className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                                             <p className="text-base text-muted-foreground text-justify [mask-image:radial-gradient(50%_50%_at_50%_50%,#BAB3FF_0%,rgba(186,179,255,0)_90.69%)]">
-                                                Usamos IA para ayudarte a crear contenido que resuene con tu audiencia. Nuestras herramientas están diseñadas para optimizar tu creación de contenido y engagement como nunca antes. Transforma tu estrategia de redes sociales con las características de vanguardia de Luro AI. Alcanza a tu audiencia con el mensaje correcto en el momento correcto. Crea contenido más rápido e inteligente con Luro AI. Transforma tu estrategia de redes sociales con las características de vanguardia de Luro AI. Crea contenido más rápido e inteligente con Luro AI. Transforma tu estrategia de redes sociales con las características de vanguardia de Luro AI. Crea contenido más rápido e inteligente con Luro AI.
+                                                Usamos IA para ayudarte a operar una cafetería más rentable. Estandariza recetas, controla mermas y costos por bebida, ajusta precios con precisión y asegura calidad consistente en cada preparación. Fideliza a tus clientes con beneficios, carta y sitio web propios, y toma decisiones con analíticas en tiempo real.
                                             </p>
                                         </div>
                                         <div className="w-full h-16 relative">
@@ -82,7 +82,7 @@ const Features = () => {
                                         </div>
                                     </div>
                                 </MagicCard>
-                                <MagicCard particles={true} className="flex flex-col items-start w-full row-start-2 !h-max bg-primary/[0.08]">
+                                <MagicCard particles={true} className="flex flex-col items-start w-full !h-max bg-primary/[0.08]">
                                     <div className="bento-card w-full gap-6 relative">
                                         <div className="w-full h-48 relative">
                                             <Images.rings className="w-full h-full absolute inset-0" />
@@ -95,7 +95,7 @@ const Features = () => {
                                 </MagicCard>
                             </div>
                             <MagicCard particles={true} className="flex flex-col items-start w-full row-span-1 bg-primary/[0.08]">
-                                <div className="bento-card w-full flex-row gap-6">
+                                <div className="bento-card w-full flex-col lg:flex-row gap-6">
                                     <div className="flex flex-col mb-auto">
                                         <h4 className="text-xl font-heading font-medium heading ">
                                             Integraciones perfectas
@@ -115,7 +115,7 @@ const Features = () => {
                     <Container>
                         <div className="grid grid-cols-1 lg:grid-cols-[.40fr_1fr] w-full gap-5 lg:gap-5">
                             <MagicCard particles={true} className="flex flex-col items-start w-full bg-primary/[0.08]">
-                                <div className="bento-card w-full flex-row gap-6">
+                                <div className="bento-card w-full flex-col lg:flex-row gap-6">
                                     <div className="w-full">
                                         <Images.image className="w-full h-40 lg:h-auto" />
                                     </div>
@@ -130,7 +130,7 @@ const Features = () => {
                                 </div>
                             </MagicCard>
                             <MagicCard particles={true} className="flex flex-col items-start w-full bg-primary/[0.08]">
-                                <div className="bento-card w-full flex-row gap-6">
+                                <div className="bento-card w-full flex-col lg:flex-row gap-6">
                                     <div className="w-full">
                                         <Images.hash className="w-full h-40 lg:h-52" />
                                     </div>

@@ -17,31 +17,28 @@ interface MetadataProps {
 }
 
 export const generateMetadata = ({
-    title = `${process.env.NEXT_PUBLIC_APP_NAME} - Smart Social Media Marketing Platform`,
-    description = "Streamline your social media management with AI-powered analytics, scheduling, and content optimization. Get real-time insights, automate posts, and boost engagement across all platforms",
+    title = `Bourbon - Comunidad Cafetera`,
+    description = "CRM para cafeterías de especialidad: control de stock e insumos, recetas estandarizadas, costos y precios, calidad del producto, fidelización de clientes, carta y sitio web, con analíticas e IA.",
     image = "/thumbnail.png",
     icons = [
         {
             rel: "icon",
             type: "image/png",
-            sizes: "32x32",
-            url: "/icons/favicon-32x32.png"
-        },
-        {
-            rel: "icon",
-            type: "image/png",
-            sizes: "16x16",
-            url: "/icons/favicon-16x16.png"
+            url: "/nb/bourbon favicon.png"
         },
     ],
     noIndex = false,
     keywords = [
-        "AI content creation",
-        "content automation",
-        "AI writing assistant",
-        "content generation",
-        "artificial intelligence",
-        "content marketing"
+        "CRM cafeterías",
+        "control de stock cafetería",
+        "recetas estandarizadas café",
+        "costos y precios cafetería",
+        "calidad del café",
+        "fidelización clientes cafetería",
+        "carta digital",
+        "sitio web cafetería",
+        "analíticas con IA",
+        "cafetería de especialidad"
     ],
     author = process.env.NEXT_PUBLIC_AUTHOR_NAME,
     twitterHandle = "@yourtwitterhandle",
@@ -51,20 +48,20 @@ export const generateMetadata = ({
     publishedTime,
     modifiedTime
 }: MetadataProps = {}): Metadata => {
-    const metadataBase = new URL(process.env.NEXT_PUBLIC_APP_URL || "https://luro-ai.vercel.app");
+    const metadataBase = new URL(process.env.NEXT_PUBLIC_APP_URL || "https://example.com");
     const imageUrl = image ? new URL(image, metadataBase).toString() : null;
 
     return {
         metadataBase,
         title: {
-            template: `%s | ${process.env.NEXT_PUBLIC_APP_NAME}`,
+            template: `%s | Bourbon`,
             default: title
         },
         description,
         keywords,
         authors: [{ name: author }],
         creator: author,
-        publisher: process.env.NEXT_PUBLIC_APP_NAME,
+        publisher: "Bourbon",
         formatDetection: {
             email: false,
             address: false,
@@ -75,7 +72,7 @@ export const generateMetadata = ({
         // OpenGraph
         openGraph: {
             type,
-            siteName: process.env.NEXT_PUBLIC_APP_NAME,
+            siteName: "Bourbon",
             title,
             description,
             ...(imageUrl && {

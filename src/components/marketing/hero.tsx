@@ -28,12 +28,12 @@ const Hero = () => {
                 </div>
             </Container>
             <BlurText
-                word={"Tu herramienta definitiva para\n marketing en redes sociales"}
+                word={"El CRM inteligente para\n cafeterías de especialidad"}
                 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent py-2 md:py-0 lg:!leading-snug font-medium racking-[-0.0125em] mt-6 font-heading"
             />
             <Container delay={0.1}>
                 <p className="text-sm sm:text-base lg:text-lg mt-4 text-accent-foreground/60 max-w-2xl mx-auto">
-                    Eleva tu presencia en redes sociales con creación de contenido y programación impulsada por IA. <span className="hidden sm:inline">Luro es la solución todo-en-uno para tus necesidades de marketing en redes sociales.</span>
+                    Optimiza costos, controla stock e ingredientes, estandariza recetas y mejora la calidad de cada taza. <span className="hidden sm:inline">Bourbon integra fidelización de clientes, carta digital, sitio web y analíticas con IA para hacer crecer tu cafetería.</span>
                 </p>
             </Container>
             <Container delay={0.2}>
@@ -45,7 +45,7 @@ const Hero = () => {
                     </Button>
                     <Button asChild size="lg" variant="outline" className="hidden md:flex">
                         <Link href="#">
-                            Cómo funciona
+                            Ver funcionalidades
                         </Link>
                     </Button>
                 </div>
