@@ -241,12 +241,32 @@ export function PlatformSettings({ settings, onUpdate }: PlatformSettingsProps) 
         setLogoFile(null)
         // Desactivar modo preview ya que los cambios están guardados
         setIsPreviewMode(false)
-        alert('Configuración guardada exitosamente')
+        // Show success notification
+        const notification = document.createElement('div')
+        notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2'
+        notification.innerHTML = `
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          Configuración guardada exitosamente
+        `
+        document.body.appendChild(notification)
+        setTimeout(() => notification.remove(), 3000)
       }
     } catch (error) {
       console.error('Error al guardar configuración:', error)
       const errorMessage = (error as Error).message || 'Error desconocido'
-      alert('Error al guardar configuración: ' + errorMessage)
+      // Show error notification
+      const notification = document.createElement('div')
+      notification.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2'
+      notification.innerHTML = `
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+        Error: ${errorMessage}
+      `
+      document.body.appendChild(notification)
+      setTimeout(() => notification.remove(), 5000)
     } finally {
       setSaving(false)
       setUploading(false)

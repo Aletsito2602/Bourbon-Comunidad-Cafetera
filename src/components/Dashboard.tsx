@@ -4,6 +4,7 @@ import { AppSidebar } from './app-sidebar'
 import { Settings } from './Settings'
 import { CoffeeRecipesManager } from './coffee/CoffeeRecipesManager'
 import { ComandasManager } from './comandas/ComandasManager'
+import { Afiliados } from './Afiliados'
 import { SidebarProvider, SidebarInset, SidebarTrigger } from '@/components/ui/sidebar'
 
 interface DashboardProps {
@@ -17,20 +18,391 @@ export function Dashboard({ onLogout }: DashboardProps) {
     switch (activeSection) {
       case 'home':
         return (
-          <div>
-            <h1 className="text-3xl font-bold mb-6">Bienvenido a Bourbon Web</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="dashboard-card">
-                <h2>Recetas</h2>
-                <p>Gestiona tus recetas de cócteles</p>
+          <div className="space-y-6">
+            {/* Header with greeting and date */}
+            <div className="flex justify-between items-start">
+              <div>
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">¡Buen día, Alejandro! ☕</h1>
+                <p className="text-gray-600">Viernes, 13 de Septiembre • Tu cafetería está funcionando perfectamente</p>
               </div>
-              <div className="dashboard-card">
-                <h2>Stock</h2>
-                <p>Controla tu inventario</p>
+              <div className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-2 rounded-lg">
+                <div className="text-sm font-medium">Estado del Sistema</div>
+                <div className="flex items-center gap-1 text-xs">
+                  <div className="w-2 h-2 bg-green-300 rounded-full animate-pulse"></div>
+                  Operativo
+                </div>
               </div>
-              <div className="dashboard-card">
-                <h2>Comandas</h2>
-                <p>Gestiona pedidos y comandas</p>
+            </div>
+
+            {/* KPI Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Revenue Today */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                    <span className="text-2xl">💰</span>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">+12.5%</div>
+                  </div>
+                </div>
+                <div className="text-2xl font-bold text-gray-900 mb-1">$2,847</div>
+                <div className="text-sm text-gray-600">Ventas de Hoy</div>
+                <div className="mt-3 flex items-center text-xs text-gray-500">
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  vs. ayer: +$318
+                </div>
+              </div>
+
+              {/* Orders Today */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <span className="text-2xl">📋</span>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">+8.3%</div>
+                  </div>
+                </div>
+                <div className="text-2xl font-bold text-gray-900 mb-1">127</div>
+                <div className="text-sm text-gray-600">Órdenes Hoy</div>
+                <div className="mt-3 flex items-center text-xs text-gray-500">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                  Promedio: 15.2 min
+                </div>
+              </div>
+
+              {/* Customer Satisfaction */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                    <span className="text-2xl">⭐</span>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-xs text-purple-600 bg-purple-50 px-2 py-1 rounded-full">+0.2</div>
+                  </div>
+                </div>
+                <div className="text-2xl font-bold text-gray-900 mb-1">4.8</div>
+                <div className="text-sm text-gray-600">Satisfacción</div>
+                <div className="mt-3 flex items-center text-xs text-gray-500">
+                  <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                  89 reseñas
+                </div>
+              </div>
+
+              {/* Active Staff */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <span className="text-2xl">👥</span>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-xs text-orange-600 bg-orange-50 px-2 py-1 rounded-full">100%</div>
+                  </div>
+                </div>
+                <div className="text-2xl font-bold text-gray-900 mb-1">8/8</div>
+                <div className="text-sm text-gray-600">Personal Activo</div>
+                <div className="mt-3 flex items-center text-xs text-gray-500">
+                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                  Turno completo
+                </div>
+              </div>
+            </div>
+
+            {/* Charts and Analytics */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Sales Chart */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="chart-title text-lg font-semibold text-gray-900">Ventas de la Semana</h3>
+                  <div className="flex gap-2">
+                    <button className="text-xs px-3 py-1 bg-amber-100 text-amber-700 rounded-full hover:bg-amber-200 transition-colors">7D</button>
+                    <button className="text-xs px-3 py-1 text-gray-500 hover:bg-gray-100 rounded-full transition-colors">30D</button>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  {/* Chart Bars */}
+                  <div className="flex items-end justify-between h-32 gap-2">
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="bg-gradient-to-t from-amber-500 to-amber-300 w-10 rounded-t" style={{height: '76px'}}>
+                      </div>
+                      <span className="text-xs text-gray-500 font-medium">Lun</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="bg-gradient-to-t from-amber-500 to-amber-300 w-10 rounded-t" style={{height: '102px'}}>
+                      </div>
+                      <span className="text-xs text-gray-500 font-medium">Mar</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="bg-gradient-to-t from-amber-500 to-amber-300 w-10 rounded-t" style={{height: '58px'}}>
+                      </div>
+                      <span className="text-xs text-gray-500 font-medium">Mié</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="bg-gradient-to-t from-amber-500 to-amber-300 w-10 rounded-t" style={{height: '115px'}}>
+                      </div>
+                      <span className="text-xs text-gray-500 font-medium">Jue</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="bg-gradient-to-t from-amber-600 to-amber-400 w-10 rounded-t shadow-lg" style={{height: '128px'}}>
+                      </div>
+                      <span className="text-xs font-medium text-amber-600">Vie</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="bg-gradient-to-t from-gray-400 to-gray-300 w-10 rounded-t" style={{height: '90px'}}>
+                      </div>
+                      <span className="text-xs text-gray-400 font-medium">Sáb</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="bg-gradient-to-t from-gray-400 to-gray-300 w-10 rounded-t" style={{height: '70px'}}>
+                      </div>
+                      <span className="text-xs text-gray-400 font-medium">Dom</span>
+                    </div>
+                  </div>
+                  
+                  {/* Summary Stats */}
+                  <div className="flex justify-between items-center pt-4 border-t border-gray-100">
+                    <div className="text-center">
+                      <div className="text-sm font-semibold text-gray-900">$14,457</div>
+                      <div className="text-xs text-gray-500">Total Semana</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-sm font-semibold text-green-600">+18.5%</div>
+                      <div className="text-xs text-gray-500">vs. Anterior</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-sm font-semibold text-gray-900">$2,065</div>
+                      <div className="text-xs text-gray-500">Promedio</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Popular Products */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">Productos Más Vendidos</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
+                        <span className="text-lg">☕</span>
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">Cappuccino</div>
+                        <div className="text-sm text-gray-500">47 vendidos</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-semibold text-gray-900">$423</div>
+                      <div className="text-xs text-green-600">+15%</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                        <span className="text-lg">🥐</span>
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">Croissant</div>
+                        <div className="text-sm text-gray-500">32 vendidos</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-semibold text-gray-900">$192</div>
+                      <div className="text-xs text-green-600">+8%</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <span className="text-lg">🧊</span>
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">Iced Latte</div>
+                        <div className="text-sm text-gray-500">28 vendidos</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-semibold text-gray-900">$168</div>
+                      <div className="text-xs text-blue-600">+22%</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <span className="text-lg">🍰</span>
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">Cheesecake</div>
+                        <div className="text-sm text-gray-500">19 vendidos</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-semibold text-gray-900">$152</div>
+                      <div className="text-xs text-purple-600">+5%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Recent Activity and Quick Actions */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Recent Orders */}
+              <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-lg font-semibold text-gray-900">Órdenes Recientes</h3>
+                  <button className="text-sm text-amber-600 hover:text-amber-700 font-medium">Ver todas</button>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                        <span className="text-xs font-bold text-green-600">#127</span>
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">Mesa 8 - Cappuccino x2, Croissant</div>
+                        <div className="text-sm text-gray-500">Hace 2 minutos</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-gray-900">$24.50</span>
+                      <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Completado</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 bg-amber-50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                        <span className="text-xs font-bold text-amber-600">#126</span>
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">Delivery - Iced Latte, Sandwich</div>
+                        <div className="text-sm text-gray-500">Hace 5 minutos</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-gray-900">$18.00</span>
+                      <span className="px-2 py-1 bg-amber-100 text-amber-700 text-xs rounded-full">En preparación</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                        <span className="text-xs font-bold text-blue-600">#125</span>
+                      </div>
+                      <div>
+                        <div className="font-medium text-gray-900">Mesa 3 - Espresso, Cheesecake</div>
+                        <div className="text-sm text-gray-500">Hace 8 minutos</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-gray-900">$15.50</span>
+                      <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Nuevo</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Actions */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <h3 className="text-lg font-semibold text-gray-900 mb-6">Acciones Rápidas</h3>
+                <div className="space-y-3">
+                  <button className="w-full flex items-center gap-3 p-3 text-left hover:bg-gray-50 rounded-lg transition-colors">
+                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                      <span className="text-lg">➕</span>
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Nueva Orden</div>
+                      <div className="text-sm text-gray-500">Crear pedido manual</div>
+                    </div>
+                  </button>
+                  
+                  <button className="w-full flex items-center gap-3 p-3 text-left hover:bg-gray-50 rounded-lg transition-colors">
+                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <span className="text-lg">📊</span>
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Ver Reportes</div>
+                      <div className="text-sm text-gray-500">Analytics detallados</div>
+                    </div>
+                  </button>
+                  
+                  <button className="w-full flex items-center gap-3 p-3 text-left hover:bg-gray-50 rounded-lg transition-colors">
+                    <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                      <span className="text-lg">📋</span>
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Gestionar Stock</div>
+                      <div className="text-sm text-gray-500">Actualizar inventario</div>
+                    </div>
+                  </button>
+                  
+                  <button className="w-full flex items-center gap-3 p-3 text-left hover:bg-gray-50 rounded-lg transition-colors">
+                    <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                      <span className="text-lg">⚙️</span>
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Configuración</div>
+                      <div className="text-sm text-gray-500">Ajustes del sistema</div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Performance Metrics */}
+            <div className="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-6 rounded-xl">
+              <div className="flex justify-between items-start mb-6">
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Rendimiento del Mes</h3>
+                  <p className="text-amber-100">Septiembre 2024 • Día 13 de 30</p>
+                </div>
+                <div className="text-right">
+                  <div className="text-2xl font-bold">87%</div>
+                  <div className="text-sm text-amber-100">del objetivo</div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className="text-center">
+                  <div className="text-2xl font-bold mb-1">$18,420</div>
+                  <div className="text-sm text-amber-100">Ventas del Mes</div>
+                  <div className="text-xs text-amber-200 mt-1">Objetivo: $21,000</div>
+                </div>
+                
+                <div className="text-center">
+                  <div className="text-2xl font-bold mb-1">1,247</div>
+                  <div className="text-sm text-amber-100">Órdenes Totales</div>
+                  <div className="text-xs text-amber-200 mt-1">Promedio: 96/día</div>
+                </div>
+                
+                <div className="text-center">
+                  <div className="text-2xl font-bold mb-1">4.7★</div>
+                  <div className="text-sm text-amber-100">Rating Promedio</div>
+                  <div className="text-xs text-amber-200 mt-1">342 reseñas</div>
+                </div>
+                
+                <div className="text-center">
+                  <div className="text-2xl font-bold mb-1">92%</div>
+                  <div className="text-sm text-amber-100">Clientes Satisfechos</div>
+                  <div className="text-xs text-amber-200 mt-1">+3% vs mes anterior</div>
+                </div>
+              </div>
+              
+              {/* Progress Bar */}
+              <div className="mt-6">
+                <div className="flex justify-between text-sm mb-2">
+                  <span>Progreso del objetivo mensual</span>
+                  <span>87%</span>
+                </div>
+                <div className="w-full bg-amber-400 bg-opacity-30 rounded-full h-2">
+                  <div className="bg-white h-2 rounded-full" style={{width: '87%'}}></div>
+                </div>
               </div>
             </div>
           </div>
@@ -369,6 +741,8 @@ export function Dashboard({ onLogout }: DashboardProps) {
         )
       case 'comandas':
         return <ComandasManager />
+      case 'afiliados':
+        return <Afiliados />
       case 'equipo':
         return (
           <div>

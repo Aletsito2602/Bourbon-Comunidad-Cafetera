@@ -52,16 +52,49 @@ export function Settings() {
       <div className="flex items-center justify-center min-h-[400px]">
         <Card className="w-full max-w-md">
           <CardHeader>
-            <CardTitle className="text-destructive">Error</CardTitle>
+            <CardTitle className="text-destructive">Error de Conexión</CardTitle>
+            <CardDescription>
+              No se pudo cargar la configuración. Verifica tu conexión a internet.
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground">{error}</p>
-            <button 
-              onClick={loadSettings}
-              className="mt-4 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
-            >
-              Reintentar
-            </button>
+            <div className="space-y-4">
+              <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-sm text-red-800">{error}</p>
+              </div>
+              <div className="flex gap-2">
+                <button 
+                  onClick={loadSettings}
+                  className="flex-1 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+                >
+                  Reintentar
+                </button>
+                <button 
+                  onClick={() => {
+                    setError(null)
+                    setSettings({
+                      id: '',
+                      user_email: 'offline@bourbon.com',
+                      platform_name: 'Bourbon Web',
+                      primary_color: '#d97706',
+                      secondary_color: '#f59e0b',
+                      accent_color: '#92400e',
+                      team_name: 'Mi Equipo',
+                      currency: 'USD',
+                      tax_rate: 0.21,
+                      invoice_prefix: 'INV',
+                      invoice_counter: 1000,
+                      timezone: 'UTC',
+                      language: 'es',
+                      theme: 'light'
+                    })
+                  }}
+                  className="flex-1 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/90 h-10 px-4 py-2"
+                >
+                  Modo Offline
+                </button>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>

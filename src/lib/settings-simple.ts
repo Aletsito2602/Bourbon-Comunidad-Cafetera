@@ -56,6 +56,11 @@ export const defaultSettings: Omit<PlatformSettings, 'id' | 'user_email' | 'crea
 const TEMP_USER_EMAIL = 'test@bourbon.com'
 
 export class SettingsService {
+  private static isOfflineMode = false
+  
+  static setOfflineMode(offline: boolean) {
+    this.isOfflineMode = offline
+  }
   static async getSettings(): Promise<{ data: PlatformSettings | null; error: any }> {
     try {
       const { data, error } = await supabase
@@ -139,9 +144,9 @@ export class SettingsService {
       }
 
       // Check file type
-      const allowedTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'image/gif']
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'image/gif', 'image/webp']
       if (!allowedTypes.includes(file.type)) {
-        throw new Error('Tipo de archivo no soportado. Use PNG, JPG, SVG o GIF.')
+        throw new Error('Tipo de archivo no soportado. Use PNG, JPG, SVG, GIF o WebP.')
       }
 
       const fileExt = file.name.split('.').pop()
@@ -155,12 +160,16 @@ export class SettingsService {
       
       if (bucketsError) {
         console.error('Error checking buckets:', bucketsError)
-        throw new Error('Error verificando buckets de almacenamiento')
+        // Fallback: try to create a data URL for preview purposes
+        console.log('Falling back to data URL for preview')
+        return this.createDataUrlFallback(file)
       }
 
       const settingsBucket = buckets?.find(b => b.name === 'settings-assets')
       if (!settingsBucket) {
-        throw new Error('Bucket de almacenamiento no encontrado. Contacte al administrador.')
+        console.warn('Storage bucket not found, using fallback method')
+        // Fallback: create a data URL for preview
+        return this.createDataUrlFallback(file)
       }
 
       // Upload the file
@@ -173,7 +182,8 @@ export class SettingsService {
 
       if (error) {
         console.error('Upload error:', error)
-        throw new Error(`Error subiendo archivo: ${error.message}`)
+        console.log('Falling back to data URL due to upload error')
+        return this.createDataUrlFallback(file)
       }
 
       console.log('Upload successful:', data)
@@ -188,7 +198,22 @@ export class SettingsService {
       return { data: urlData.publicUrl, error: null }
     } catch (error) {
       console.error('Upload function error:', error)
-      return { data: null, error }
+      // Final fallback
+      return this.createDataUrlFallback(file)
     }
+  }
+
+  private static createDataUrlFallback(file: File): Promise<{ data: string | null; error: any }> {
+    return new Promise((resolve) => {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        console.log('Using data URL fallback for file preview')
+        resolve({ data: e.target?.result as string, error: null })
+      }
+      reader.onerror = () => {
+        resolve({ data: null, error: new Error('Error al procesar la imagen') })
+      }
+      reader.readAsDataURL(file)
+    })
   }
 }

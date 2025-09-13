@@ -1,19 +1,18 @@
 import {
-  ChefHat,
   Home,
   Coffee,
   FileText,
   ClipboardList,
-  Receipt,
   Settings,
-  Users,
   Smartphone,
+  Receipt,
   Users2,
   Code,
-  HelpCircle,
   LifeBuoy,
-  ChevronDown,
-  ChevronRight,
+  HelpCircle,
+  Users,
+  UserCheck,
+  ChefHat,
 } from "lucide-react"
 
 import {
@@ -21,16 +20,10 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
 import { useSettings } from "@/contexts/SettingsContext"
-import { useState } from "react"
 
 // Menu items organizados por categorías
 const mainItems = [
@@ -58,6 +51,11 @@ const mainItems = [
     id: "comandas",
     title: "Comandas",
     icon: ClipboardList,
+  },
+  {
+    id: "afiliados",
+    title: "Afiliados",
+    icon: UserCheck,
   },
 ]
 
@@ -104,20 +102,6 @@ interface AppSidebarProps {
 
 export function AppSidebar({ activeSection, onSectionChange }: AppSidebarProps) {
   const { settings } = useSettings()
-
-  // Función para determinar el color de contraste
-  const getContrastColor = (backgroundColor: string): string => {
-    if (!backgroundColor || !backgroundColor.includes('#')) return '#000000'
-    
-    const hex = backgroundColor.replace('#', '')
-    const r = parseInt(hex.substr(0, 2), 16)
-    const g = parseInt(hex.substr(2, 2), 16)
-    const b = parseInt(hex.substr(4, 2), 16)
-    
-    // Calcular luminancia
-    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
-    return luminance < 0.5 ? '#ffffff' : '#000000'
-  }
   
   return (
     <Sidebar variant="inset" className="modern-sidebar">
@@ -132,7 +116,8 @@ export function AppSidebar({ activeSection, onSectionChange }: AppSidebarProps) 
               onError={(e) => {
                 // Fallback to emoji if favicon doesn't exist
                 e.currentTarget.style.display = 'none';
-                e.currentTarget.nextElementSibling!.style.display = 'inline';
+                const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
+                if (nextElement) nextElement.style.display = 'inline';
               }}
             />
             <span className="logo-fallback" style={{ display: 'none' }}>🥃</span>
@@ -155,8 +140,8 @@ export function AppSidebar({ activeSection, onSectionChange }: AppSidebarProps) 
                   onClick={() => onSectionChange(item.id)}
                   className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
                   style={{
-                    backgroundColor: activeSection === item.id ? 'var(--primary-color, #667eea)' : 'transparent',
-                    color: activeSection === item.id ? 'var(--primary-contrast, #ffffff)' : 'rgba(255, 255, 255, 0.7)'
+                    backgroundColor: activeSection === item.id ? '#d97706' : 'transparent',
+                    color: activeSection === item.id ? '#ffffff' : 'rgba(255, 255, 255, 0.7)'
                   }}
                 >
                   <div className="nav-icon">
@@ -184,8 +169,8 @@ export function AppSidebar({ activeSection, onSectionChange }: AppSidebarProps) 
                   onClick={() => onSectionChange(item.id)}
                   className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
                   style={{
-                    backgroundColor: activeSection === item.id ? 'var(--accent-color, #92400e)' : 'transparent',
-                    color: activeSection === item.id ? 'var(--accent-contrast, #ffffff)' : 'rgba(255, 255, 255, 0.7)'
+                    backgroundColor: activeSection === item.id ? '#d97706' : 'transparent',
+                    color: activeSection === item.id ? '#ffffff' : 'rgba(255, 255, 255, 0.7)'
                   }}
                 >
                   <div className="nav-icon">
@@ -213,8 +198,8 @@ export function AppSidebar({ activeSection, onSectionChange }: AppSidebarProps) 
                   onClick={() => onSectionChange(item.id)}
                   className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
                   style={{
-                    backgroundColor: activeSection === item.id ? 'var(--secondary-color, #f59e0b)' : 'transparent',
-                    color: activeSection === item.id ? 'var(--secondary-contrast, #ffffff)' : 'rgba(255, 255, 255, 0.7)'
+                    backgroundColor: activeSection === item.id ? '#d97706' : 'transparent',
+                    color: activeSection === item.id ? '#ffffff' : 'rgba(255, 255, 255, 0.7)'
                   }}
                 >
                   <div className="nav-icon">
@@ -228,27 +213,24 @@ export function AppSidebar({ activeSection, onSectionChange }: AppSidebarProps) 
         </div>
       </SidebarContent>
       <SidebarFooter>
-        <div className="profile-section">
-          <div className="profile-header">
-            <div className="profile-avatar">
-              <Users className="h-4 w-4" />
+        <div className="profile-section-compact">
+          <div className="profile-compact-content">
+            <div className="profile-avatar-small">
+              <Users className="h-3 w-3" />
             </div>
-            <div className="profile-info">
-              <div className="profile-name">{settings?.team_name || 'Mi Equipo'}</div>
-              <div className="profile-status">
-                <div className="status-dot"></div>
+            <div className="profile-info-compact">
+              <div className="profile-name-compact">{settings?.team_name || 'Mi Equipo'}</div>
+              <div className="profile-status-compact">
+                <div className="status-dot-small"></div>
                 <span>Online</span>
               </div>
             </div>
-          </div>
-          
-          <div className="profile-actions">
             <button 
               onClick={() => onSectionChange('ajustes')}
-              className={`profile-action-btn ${activeSection === 'ajustes' ? 'active' : ''}`}
+              className={`profile-action-btn-compact ${activeSection === 'ajustes' ? 'active' : ''}`}
               title="Ajustes"
             >
-              <Settings className="h-4 w-4" />
+              <Settings className="h-3.5 w-3.5" />
             </button>
           </div>
         </div>
