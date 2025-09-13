@@ -38,13 +38,13 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
       if (error) {
         console.error('Error loading settings:', error)
         // Si hay error, usar configuraciones por defecto
-        setSettings({ ...defaultSettings, id: '', user_id: user?.id || '' })
+        setSettings({ ...defaultSettings, id: '' })
       } else {
         setSettings(data)
       }
     } catch (error) {
       console.error('Error loading settings:', error)
-      setSettings({ ...defaultSettings, id: '', user_id: user?.id || '' })
+      setSettings({ ...defaultSettings, id: '' })
     } finally {
       setLoading(false)
     }

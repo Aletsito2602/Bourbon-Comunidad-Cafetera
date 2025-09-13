@@ -45,7 +45,7 @@ export class AuthService {
 
   // Escuchar cambios en el estado de autenticación
   static onAuthStateChange(callback: (user: User | null) => void) {
-    return supabase.auth.onAuthStateChange((event, session) => {
+    return supabase.auth.onAuthStateChange((_, session) => {
       callback(session?.user ?? null)
     })
   }

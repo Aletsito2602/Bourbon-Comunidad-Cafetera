@@ -56,11 +56,11 @@ export const defaultSettings: Omit<PlatformSettings, 'id' | 'user_email' | 'crea
 const TEMP_USER_EMAIL = 'test@bourbon.com'
 
 export class SettingsService {
-  private static isOfflineMode = false
+  // private static isOfflineMode = false
   
-  static setOfflineMode(offline: boolean) {
-    this.isOfflineMode = offline
-  }
+  // static setOfflineMode(offline: boolean) {
+  //   this.isOfflineMode = offline
+  // }
   static async getSettings(): Promise<{ data: PlatformSettings | null; error: any }> {
     try {
       const { data, error } = await supabase

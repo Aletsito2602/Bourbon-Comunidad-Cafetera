@@ -54,7 +54,7 @@ export function CoffeeshopSettings({ settings, onUpdate }: CoffeeshopSettingsPro
           throw uploadError
         }
         
-        logoUrl = uploadedUrl
+        logoUrl = uploadedUrl || undefined
         setUploading(false)
       }
 

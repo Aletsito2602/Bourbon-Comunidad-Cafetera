@@ -150,7 +150,7 @@ export class SettingsService {
       const fileExt = file.name.split('.').pop()
       const fileName = `${user.id}/${type}_logo_${Date.now()}.${fileExt}`
 
-      const { data, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from('settings-assets')
         .upload(fileName, file)
 

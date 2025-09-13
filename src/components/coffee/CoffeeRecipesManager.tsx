@@ -5,7 +5,7 @@ import { SCAExtractionCalculator } from './SCAExtractionCalculator';
 import type { RecipeSummary } from '../../types/coffee';
 
 export function CoffeeRecipesManager() {
-  const [recipes, setRecipes] = useState<RecipeSummary[]>([]);
+  const [, setRecipes] = useState<RecipeSummary[]>([]);
   const [selectedRecipe, setSelectedRecipe] = useState<RecipeSummary | null>(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [showCalculator, setShowCalculator] = useState(false);

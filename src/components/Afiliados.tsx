@@ -3,16 +3,11 @@ import {
   UserCheck, 
   QrCode, 
   Scan, 
-  Star, 
   Gift, 
   TrendingUp,
   Users,
   Award,
-  Coffee,
-  Calendar,
   Search,
-  Filter,
-  MoreVertical,
   Eye,
   Edit,
   Trash2,
@@ -106,7 +101,7 @@ export function Afiliados() {
   const [activeTab, setActiveTab] = useState('dashboard')
   const [searchTerm, setSearchTerm] = useState('')
   const [filterLevel, setFilterLevel] = useState('all')
-  const [showQRScanner, setShowQRScanner] = useState(false)
+  // const [showQRScanner, setShowQRScanner] = useState(false)
 
   const filteredAffiliates = mockAffiliates.filter(affiliate => {
     const matchesSearch = affiliate.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

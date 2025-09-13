@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Coffee, Lock, Mail, AlertCircle, CheckCircle, X } from 'lucide-react'
+import { Lock, Mail, AlertCircle, CheckCircle } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 
 export function Login() {

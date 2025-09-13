@@ -156,10 +156,17 @@ export class CoffeeRecipeService {
 
   static async incrementBrewCount(id: string): Promise<void> {
     try {
+      // First get current brew count
+      const { data: currentRecipe } = await supabase
+        .from('coffee_recipes')
+        .select('brew_count')
+        .eq('id', id)
+        .single();
+
       const { error } = await supabase
         .from('coffee_recipes')
         .update({ 
-          brew_count: supabase.raw('brew_count + 1'),
+          brew_count: (currentRecipe?.brew_count || 0) + 1,
           last_brewed_at: new Date().toISOString()
         })
         .eq('id', id);
