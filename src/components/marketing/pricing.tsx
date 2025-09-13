@@ -10,6 +10,7 @@ import Container from "../global/container";
 import { Button } from "../ui/button";
 import NumberTicker from "../ui/number-ticker";
 import { SectionBadge } from "../ui/section-bade";
+import { DotGridBackground } from "../ui/animated-backgrounds";
 
 type Plan = "monthly" | "yearly";
 
@@ -28,8 +29,7 @@ const Pricing = () => {
                 </div>
             </Container>
             <div className="mt-8 w-full relative flex flex-col items-center justify-center">
-                <div className="absolute hidden lg:block top-1/2 right-2/3 translate-x-1/4 -translate-y-1/2 w-96 h-96 bg-primary/15 blur-[10rem] -z-10"></div>
-                <div className="absolute hidden lg:block top-1/2 left-2/3 -translate-x-1/4 -translate-y-1/2 w-96 h-96 bg-violet-500/15 blur-[10rem] -z-10"></div>
+                <DotGridBackground className="-z-10" />
                 <Container>
                     <Tabs defaultValue="monthly" className="w-full flex flex-col items-center justify-center">
                         <TabsList>
@@ -41,7 +41,7 @@ const Pricing = () => {
                             </TabsTrigger>
                         </TabsList>
                         <TabsContent value="monthly">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mt-14">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl mx-auto mt-14">
                                 {PLANS.map((plan, index) => (
                                     <Plan
                                         key={index}
@@ -53,7 +53,7 @@ const Pricing = () => {
                             </div>
                         </TabsContent>
                         <TabsContent value="yearly">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mt-14">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl mx-auto mt-14">
                                 {PLANS.map((plan, index) => (
                                     <Plan
                                         key={index}
@@ -121,7 +121,7 @@ const Plan = ({
                         </span>
                     </div>
                 )}
-                <div className="flex flex-col p-3 w-full">
+                <div className="flex flex-col p-4 w-full">
                     <h2 className="text-xl font-medium">
                         {title}
                     </h2>
@@ -130,7 +130,7 @@ const Plan = ({
                     </p>
                 </div>
                 <hr className="shrink-0 border-none w-full h-px bg-border" role="separator" />
-                <div className="relative flex flex-col flex-1 align-top w-full p-3 h-full break-words text-left gap-4">
+                <div className="relative flex flex-col flex-1 align-top w-full p-4 h-full break-words text-left gap-4">
                     <div className="flex items-end gap-2">
                         <div className="flex items-end gap-1 w-40">
                             <span className="text-3xl md:text-4xl font-bold">
@@ -167,7 +167,7 @@ const Plan = ({
                         ))}
                     </ul>
                 </div>
-                <div className="p-3 mt- h-auto flex w-full items-center">
+                <div className="p-4 mt- h-auto flex w-full items-center">
                     <Button
                         asChild
                         variant={id === "pro" ? "default" : "tertiary"}

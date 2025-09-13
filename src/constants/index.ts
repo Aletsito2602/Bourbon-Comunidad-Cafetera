@@ -1,6 +1,6 @@
 import { APP_NAME, APP_DOMAIN, APP_HOSTNAMES } from "./site";
 import { inter, satoshi } from "./fonts";
-import { PERKS } from "./perks";
+import { PERKS, PERK_GROUPS } from "./perks";
 import { PLANS } from "./plans";
 import { REVIEWS } from "./reviews";
 import { FOOTER_LINKS } from "./links";
@@ -17,6 +17,7 @@ export {
     FADE_IN_VARIANTS,
     MODAL_VARIANTS,
     PERKS,
+    PERK_GROUPS,
     PLANS,
     REVIEWS,
     FOOTER_LINKS,

@@ -19,7 +19,7 @@ interface MetadataProps {
 export const generateMetadata = ({
     title = `Bourbon - Comunidad Cafetera`,
     description = "CRM para cafeterías de especialidad: control de stock e insumos, recetas estandarizadas, costos y precios, calidad del producto, fidelización de clientes, carta y sitio web, con analíticas e IA.",
-    image = "/thumbnail.png",
+    image = "/images/dashboardb.png",
     icons = [
         {
             rel: "icon",

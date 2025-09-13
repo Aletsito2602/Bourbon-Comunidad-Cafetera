@@ -1,26 +1,41 @@
-import Images from "../global/images";
 import Marquee from "../ui/marquee";
 
 const Companies = () => {
+    const coffeeShops = [
+        { name: "Aste Coffee", src: "/cafeterias/aste_white_hd.png" },
+        { name: "Godere Coffee", src: "/cafeterias/godere_white_hd.png" },
+        { name: "Kaapeh Coffee", src: "/cafeterias/kaapeh_white_hd.png" },
+        { name: "Kaizen Coffee", src: "/cafeterias/kaizen_white_hd.png" },
+    ];
+
     return (
         <div className="flex w-full py-20">
             <div className="flex flex-col items-center justify-center text-center w-full py-2">
                 <h2 className="text-xl heading">
-                    Companies that trust us
+                    Cafeterías que confían
                 </h2>
                 <div className="mt-16 w-full relative overflow-hidden">
-                    <Marquee pauseOnHover className="[--duration:30s]">
-                        <div className="flex gap-8 md:gap-12">
-                            <Images.company1 className="w-24 h-8" />
-                            <Images.company2 className="w-24 h-8" />
-                            <Images.company3 className="w-24 h-8" />
-                            <Images.company4 className="w-24 h-8" />
-                            <Images.company5 className="w-24 h-8" />
-                            <Images.company6 className="w-24 h-8" />
-                            <Images.company7 className="w-24 h-8" />
-                            <Images.company8 className="w-24 h-8" />
-                            <Images.company9 className="w-24 h-8" />
-                            <Images.company10 className="w-24 h-8" />
+                    <Marquee pauseOnHover className="[--duration:20s]">
+                        <div className="flex gap-12 md:gap-16 items-center">
+                            {coffeeShops.map((shop, index) => (
+                                <div key={`${shop.name}-${index}`} className="flex items-center justify-center">
+                                    <img
+                                        src={shop.src}
+                                        alt={shop.name}
+                                        className="h-8 w-auto object-contain filter brightness-0 invert opacity-60 hover:opacity-100 transition-opacity duration-300"
+                                    />
+                                </div>
+                            ))}
+                            {/* Duplicate for seamless loop */}
+                            {coffeeShops.map((shop, index) => (
+                                <div key={`${shop.name}-duplicate-${index}`} className="flex items-center justify-center">
+                                    <img
+                                        src={shop.src}
+                                        alt={shop.name}
+                                        className="h-8 w-auto object-contain filter brightness-0 invert opacity-60 hover:opacity-100 transition-opacity duration-300"
+                                    />
+                                </div>
+                            ))}
                         </div>
                     </Marquee>
                     <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>

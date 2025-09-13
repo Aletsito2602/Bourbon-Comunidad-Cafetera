@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Box, CalendarClock, Captions, CircleHelp, CopyCheck, FileText, Gem, Layers3, LineChart, Newspaper, UserCog, Waypoints } from "lucide-react";
 import Link from "next/link";
 import React from 'react';
+import { useTheme } from "next-themes";
 
 interface Props {
     isOpen: boolean;
@@ -16,6 +17,7 @@ interface Props {
 const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
 
     const ref = useClickOutside(() => setIsOpen(false));
+    const { theme } = useTheme();
 
     const variants = {
         open: { opacity: 1, y: 20 },
@@ -48,7 +50,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
                     >
                         <Link href="/how-it-works" className="flex items-center w-full text-start">
                             <UserCog className="w-4 h-4 mr-2" />
-                            How it works
+                            Cómo funciona
                         </Link>
                     </li>
                     <Accordion type="single" collapsible className="w-full">
@@ -56,7 +58,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
                             <AccordionTrigger className="px-4 py-2 text-lg hover:text-muted-foreground font-normal">
                                 <span className="flex items-center">
                                     <CopyCheck className="w-4 h-4 mr-2" />
-                                    Features
+                                    Características
                                 </span>
                             </AccordionTrigger>
                             <AccordionContent onClick={() => setIsOpen(false)} className="flex flex-col items-start gap-1 mt-1">
@@ -65,7 +67,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
                                 >
                                     <Link href="/" className="flex items-center w-full text-start">
                                         <Captions className="w-4 h-4 mr-2" />
-                                        Caption Generation
+                                        Generación de descripciones
                                     </Link>
                                 </li>
                                 <li
@@ -73,7 +75,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
                                 >
                                     <Link href="/" className="flex items-center w-full text-start">
                                         <CalendarClock className="w-4 h-4 mr-2" />
-                                        Post Scheduling
+                                        Programación de publicaciones
                                     </Link>
                                 </li>
                                 <li
@@ -81,7 +83,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
                                 >
                                     <Link href="/" className="flex items-center w-full text-start">
                                         <LineChart className="w-4 h-4 mr-2" />
-                                        Analytics Dashboard
+                                        Panel de analíticas
                                     </Link>
                                 </li>
                             </AccordionContent>
@@ -93,7 +95,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
                     >
                         <Link href="/" className="flex items-center w-full text-start">
                             <Gem className="w-4 h-4 mr-2" />
-                            Pricing
+                            Precios
                         </Link>
                     </li>
                     <li
@@ -102,7 +104,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
                     >
                         <Link href="/" className="flex items-center w-full text-start">
                             <Waypoints className="w-4 h-4 mr-2" />
-                            Integrations
+                            Integraciones
                         </Link>
                     </li>
                     <Accordion type="single" collapsible className="w-full">
@@ -110,45 +112,50 @@ const MobileMenu = ({ isOpen, setIsOpen }: Props) => {
                             <AccordionTrigger className="px-4 py-2 text-lg hover:text-muted-foreground font-normal">
                                 <span className="flex items-center">
                                     <Layers3 className="w-4 h-4 mr-2" />
-                                    Resources
+                                    Recursos
                                 </span>
                             </AccordionTrigger>
                             <AccordionContent onClick={() => setIsOpen(false)} className="flex flex-col items-start gap-1 mt-1">
-                                <li
-                                    className="w-full px-4 py-2 text-lg font-normal transition transform rounded-md cursor-pointer text-foreground/80 hover:text-muted-foreground text-start active:scale-95 hover:bg-muted/20 active:opacity-80"
-                                >
-                                    <Link href="/" className="flex items-center w-full text-start">
+                                <li className="w-full px-4 py-2 text-lg font-normal transition transform rounded-md cursor-pointer text-foreground/80 hover:text-muted-foreground text-start active:scale-95 hover:bg-muted/20 active:opacity-80">
+                                    <Link href="/resources/affiliates" className="flex items-center w-full text-start">
                                         <Newspaper className="w-4 h-4 mr-2" />
-                                        Blog
+                                        Sistema de afiliados
                                     </Link>
                                 </li>
-                                <li
-                                    className="w-full px-4 py-2 text-lg font-normal transition transform rounded-md cursor-pointer text-foreground/80 hover:text-muted-foreground text-start active:scale-95 hover:bg-muted/20 active:opacity-80"
-                                >
-                                    <Link href="/" className="flex items-center w-full text-start">
-                                        <FileText className="w-4 h-4 mr-2" />
-                                        Case Studies
-                                    </Link>
-                                </li>
-                                <li
-                                    className="w-full px-4 py-2 text-lg font-normal transition transform rounded-md cursor-pointer text-foreground/80 hover:text-muted-foreground text-start active:scale-95 hover:bg-muted/20 active:opacity-80"
-                                >
-                                    <Link href="/" className="flex items-center w-full text-start">
-                                        <Box className="w-4 h-4 mr-2" />
-                                        Tools
-                                    </Link>
-                                </li>
-                                <li
-                                    className="w-full px-4 py-2 text-lg font-normal transition transform rounded-md cursor-pointer text-foreground/80 hover:text-muted-foreground text-start active:scale-95 hover:bg-muted/20 active:opacity-80"
-                                >
-                                    <Link href="/" className="flex items-center w-full text-start">
+                                <li className="w-full px-4 py-2 text-lg font-normal transition transform rounded-md cursor-pointer text-foreground/80 hover:text-muted-foreground text-start active:scale-95 hover:bg-muted/20 active:opacity-80">
+                                    <Link href="/community" className="flex items-center w-full text-start">
                                         <CircleHelp className="w-4 h-4 mr-2" />
-                                        Support
+                                        Comunidad
                                     </Link>
                                 </li>
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>
+                    {/* Auth actions */}
+                    <li className="w-full px-4 pt-2">
+                        <Link
+                            href="https://app.soybourbon.com"
+                            className={cn(
+                                "inline-flex items-center justify-center w-full h-11 rounded-md border text-base transition",
+                                theme === "light" ? "bg-teal-500 text-white border-teal-500 hover:bg-teal-600" : "bg-muted/20 text-foreground border-border hover:bg-muted/30"
+                            )}
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Iniciar sesión
+                        </Link>
+                    </li>
+                    <li className="w-full px-4 pb-2">
+                        <Link
+                            href="https://app.soybourbon.com/register"
+                            className={cn(
+                                "inline-flex items-center justify-center w-full h-11 rounded-md border text-base transition",
+                                theme === "light" ? "bg-teal-500 text-white border-teal-500 hover:bg-teal-600" : "bg-muted/20 text-foreground border-border hover:bg-muted/30"
+                            )}
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Unirte
+                        </Link>
+                    </li>
                 </ul>
             </motion.div>
         </div>

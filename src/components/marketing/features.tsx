@@ -1,152 +1,214 @@
 "use client";
 
 import Container from "../global/container";
-import Icons from "../global/icons";
-import Images from "../global/images";
+import { AnimatedCoffeeWaste, AnimatedQuality, AnimatedCustomers, AnimatedMenu, AnimatedCosts } from "@/components/ui/animated-icons";
+import { GridMotionBackground, ParticleBackground, DotGridBackground } from "@/components/ui/animated-backgrounds";
 import MagicCard from "../ui/magic-card";
-import { Ripple } from "../ui/ripple";
 import { SectionBadge } from "../ui/section-bade";
+import { motion } from "framer-motion";
 
 const Features = () => {
     return (
-        <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full">
+        <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full relative">
+            <DotGridBackground className="-z-10" />
             <Container>
-                <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
+                <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
                     <SectionBadge title="Características" />
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mt-6">
-                        Crea contenido más rápido <br /> y más inteligente
-                    </h2>
-                    <p className="text-base md:text-lg text-center text-accent-foreground/80 mt-6">
-                        Transforma la gestión de tu cafetería con herramientas de vanguardia: control de stock e insumos, recetas estandarizadas, costos y precios precisos, calidad constante y analíticas con IA.
-                    </p>
+                    <motion.h2 
+                        className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold !leading-tight mt-6 bg-gradient-to-r from-foreground via-foreground/90 to-foreground/70 bg-clip-text text-transparent"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
+                        Optimiza tu cafetería <br /> con inteligencia artificial
+                    </motion.h2>
+                    <motion.p 
+                        className="text-lg md:text-xl text-center text-muted-foreground mt-8 leading-relaxed"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                    >
+                        Reduce desperdicios, mejora la calidad, aumenta el reconsumo y perfecciona tu carta con herramientas diseñadas específicamente para cafeterías modernas.
+                    </motion.p>
                 </div>
             </Container>
-            <div className="mt-16 w-full">
-                <div className="flex flex-col items-center gap-5 lg:gap-5 w-full">
-                    <Container>
-                        <div className="grid grid-cols-1 lg:grid-cols-[1fr_.65fr] w-full gap-5 lg:gap-5">
-                            <MagicCard particles={true} className="flex flex-col items-start size-full bg-primary/[0.08]">
-                                <div className="bento-card flex items-center justify-center min-h-72">
-                                    <span className="text-muted-foreground group-hover:text-foreground mx-auto relative">
-                                        <Icons.stars className="w-20 h-20" />
-                                    </span>
-                                    <Ripple />
-                                </div>
-                            </MagicCard>
-                            <MagicCard particles={true} className="flex flex-col items-start w-full bg-primary/[0.08]">
-                                <div className="bento-card w-full flex-col lg:flex-row gap-6">
-                                    <div className="w-full h-40">
-                                        <Images.analytics className="w-full h-full" />
+            <div className="mt-20 w-full">
+                <Container>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
+                        {/* Reduce desperdicios */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                        >
+                            <MagicCard particles={true} className="group h-full bg-white/90 dark:bg-primary/[0.12] border border-border/60 dark:border-primary/20 hover:border-primary/30 transition-all duration-300">
+                                <div className="p-8 h-full flex flex-col">
+                                    <div className="relative w-full h-48 mb-6 rounded-xl overflow-hidden">
+                                        <AnimatedCoffeeWaste className="w-full h-full" />
+                                        <GridMotionBackground className="-z-10 opacity-30" />
                                     </div>
-                                    <div className="flex flex-col">
-                                        <h4 className="text-xl font-heading font-medium heading ">
-                                            Obtén analíticas avanzadas
-                                        </h4>
-                                        <p className="text-sm md:text-base mt-2 text-muted-foreground">
-                                            Rastrea tu rendimiento con analíticas detalladas y optimiza para obtener mejores resultados.
-                                        </p>
-                                    </div>
-                                </div>
-                            </MagicCard>
-                        </div>
-                    </Container>
-                    <Container>
-                        <div className="grid grid-cols-1 lg:grid-cols-3 w-full gap-5 lg:gap-5">
-                            <MagicCard particles={true} className="flex flex-col items-start w-full row-span-1 bg-primary/[0.08]">
-                                <div className="bento-card w-full flex-col lg:flex-row gap-6">
-                                    <div className="w-full h-52 relative">
-                                        <Images.ideation className="w-full h-full" />
-                                        <div className="w-40 h-40 rounded-full bg-primary/10 blur-3xl -z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-                                    </div>
-                                    <div className="flex flex-col mt-auto">
-                                        <h4 className="text-xl font-heading font-medium heading">
-                                            Ideación de contenido
-                                        </h4>
-                                        <p className="text-sm md:text-base mt-2 text-muted-foreground">
-                                            Genera ideas para tu contenido con nuestras herramientas impulsadas por IA para crear publicaciones atractivas en segundos.
-                                        </p>
-                                    </div>
-                                </div>
-                            </MagicCard>
-                            <div className="grid grid-cols-1 gap-5 lg:gap-5">
-                                <MagicCard particles={true} className="flex flex-col items-start w-full h-32 bg-primary/[0.08]">
-                                    <div className="bento-card w-full relative items-center justify-center">
-                                        <div className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                            <p className="text-base text-muted-foreground text-justify [mask-image:radial-gradient(50%_50%_at_50%_50%,#BAB3FF_0%,rgba(186,179,255,0)_90.69%)]">
-                                                Usamos IA para ayudarte a operar una cafetería más rentable. Estandariza recetas, controla mermas y costos por bebida, ajusta precios con precisión y asegura calidad consistente en cada preparación. Fideliza a tus clientes con beneficios, carta y sitio web propios, y toma decisiones con analíticas en tiempo real.
+                                    <div className="flex-1 flex flex-col justify-between">
+                                        <div>
+                                            <h3 className="text-xl font-heading font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                                                Reduce desperdicios
+                                            </h3>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                Controla el stock en tiempo real y minimiza las mermas con alertas inteligentes.
                                             </p>
                                         </div>
-                                        <div className="w-full h-16 relative">
-                                            <Images.centeral className="w-full h-full" />
-                                            <div className="w-20 h-20 rounded-full bg-primary/10 blur-2xl z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                                        <div className="mt-6 flex items-center text-primary text-sm font-medium">
+                                            Ahorra hasta 30% en costos
+                                            <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                            </svg>
                                         </div>
                                     </div>
-                                </MagicCard>
-                                <MagicCard particles={true} className="flex flex-col items-start w-full !h-max bg-primary/[0.08]">
-                                    <div className="bento-card w-full gap-6 relative">
-                                        <div className="w-full h-48 relative">
-                                            <Images.rings className="w-full h-full absolute inset-0" />
-                                            <Images.rings className="w-56 h-56 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                                            <Icons.icon className="w-24 h-24 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-80" />
-                                            <Images.circlePallete className="w-full h-full opacity-30" />
-                                        </div>
-                                        <div className="w-28 h-28 rounded-full bg-primary/10 blur-3xl -z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                                </div>
+                            </MagicCard>
+                        </motion.div>
+
+                        {/* Mejora la calidad */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.8 }}
+                        >
+                            <MagicCard particles={true} className="group h-full bg-white/90 dark:bg-primary/[0.12] border border-border/60 dark:border-primary/20 hover:border-primary/30 transition-all duration-300">
+                                <div className="p-8 h-full flex flex-col">
+                                    <div className="relative w-full h-48 mb-6 rounded-xl overflow-hidden">
+                                        <AnimatedQuality className="w-full h-full" />
+                                        <ParticleBackground className="-z-10 opacity-40" />
                                     </div>
-                                </MagicCard>
+                                    <div className="flex-1 flex flex-col justify-between">
+                                        <div>
+                                            <h3 className="text-xl font-heading font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                                                Mejora la calidad
+                                            </h3>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                Estandariza recetas y procesos para garantizar sabor consistente en cada bebida.
+                                            </p>
+                                        </div>
+                                        <div className="mt-6 flex items-center text-primary text-sm font-medium">
+                                            Calidad constante 100%
+                                            <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </MagicCard>
+                        </motion.div>
+
+                        {/* Aumenta el reconsumo */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 1.0 }}
+                        >
+                            <MagicCard particles={true} className="group h-full bg-white/90 dark:bg-primary/[0.12] border border-border/60 dark:border-primary/20 hover:border-primary/30 transition-all duration-300">
+                                <div className="p-8 h-full flex flex-col">
+                                    <div className="relative w-full h-48 mb-6 rounded-xl overflow-hidden">
+                                        <AnimatedCustomers className="w-full h-full" />
+                                        <GridMotionBackground className="-z-10 opacity-25" />
+                                    </div>
+                                    <div className="flex-1 flex flex-col justify-between">
+                                        <div>
+                                            <h3 className="text-xl font-heading font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                                                Aumenta reconsumo
+                                            </h3>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                Fideliza clientes con programas de lealtad y recomendaciones personalizadas.
+                                            </p>
+                                        </div>
+                                        <div className="mt-6 flex items-center text-primary text-sm font-medium">
+                                            +40% clientes recurrentes
+                                            <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </MagicCard>
+                        </motion.div>
+
+                        {/* Control de costos */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 1.2 }}
+                        >
+                            <MagicCard particles={true} className="group h-full bg-white/90 dark:bg-primary/[0.12] border border-border/60 dark:border-primary/20 hover:border-primary/30 transition-all duration-300">
+                                <div className="p-8 h-full flex flex-col">
+                                    <div className="relative w-full h-48 mb-6 rounded-xl overflow-hidden">
+                                        <AnimatedCosts className="w-full h-full" />
+                                        <ParticleBackground className="-z-10 opacity-35" />
+                                    </div>
+                                    <div className="flex-1 flex flex-col justify-between">
+                                        <div>
+                                            <h3 className="text-xl font-heading font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                                                Control de costos
+                                            </h3>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                Calcula automáticamente costos reales y optimiza precios para máxima rentabilidad.
+                                            </p>
+                                        </div>
+                                        <div className="mt-6 flex items-center text-primary text-sm font-medium">
+                                            Rentabilidad optimizada
+                                            <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </MagicCard>
+                        </motion.div>
+                    </div>
+                </Container>
+
+                {/* Sección adicional con carta digital */}
+                <Container>
+                    <motion.div
+                        className="mt-16"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 1.4 }}
+                    >
+                        <MagicCard particles={true} className="group bg-gradient-to-r from-white/95 to-white/90 dark:from-primary/[0.15] dark:to-primary/[0.08] border border-border/60 dark:border-primary/20 hover:border-primary/30 transition-all duration-300">
+                            <div className="p-12 lg:p-16">
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                                    <div>
+                                        <h3 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6 group-hover:text-primary transition-colors">
+                                            Optimiza tu carta digital
+                                        </h3>
+                                        <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                                            Crea menús atractivos con fotos profesionales, descripciones optimizadas y precios estratégicos que aumenten las ventas de cada producto.
+                                        </p>
+                                        <div className="space-y-4">
+                                            <div className="flex items-center text-foreground">
+                                                <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                                                <span className="text-sm font-medium">Fotos profesionales automatizadas</span>
+                                            </div>
+                                            <div className="flex items-center text-foreground">
+                                                <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                                                <span className="text-sm font-medium">Descripciones que venden más</span>
+                                            </div>
+                                            <div className="flex items-center text-foreground">
+                                                <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                                                <span className="text-sm font-medium">Precios optimizados por IA</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="relative">
+                                        <div className="relative w-full h-80 rounded-2xl overflow-hidden">
+                                            <AnimatedMenu className="w-full h-full" />
+                                            <GridMotionBackground className="-z-10 opacity-20" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <MagicCard particles={true} className="flex flex-col items-start w-full row-span-1 bg-primary/[0.08]">
-                                <div className="bento-card w-full flex-col lg:flex-row gap-6">
-                                    <div className="flex flex-col mb-auto">
-                                        <h4 className="text-xl font-heading font-medium heading ">
-                                            Integraciones perfectas
-                                        </h4>
-                                        <p className="text-sm md:text-base mt-2 text-muted-foreground">
-                                            Conecta tus herramientas y plataformas favoritas para agilizar tu flujo de trabajo y ahorrar tiempo.
-                                        </p>
-                                    </div>
-                                    <div className="w-full h-28 relative">
-                                        <Images.integration className="w-full h-full" />
-                                        <div className="w-28 h-28 rounded-full bg-primary/10 blur-3xl -z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full"></div>
-                                    </div>
-                                </div>
-                            </MagicCard>
-                        </div>
-                    </Container>
-                    <Container>
-                        <div className="grid grid-cols-1 lg:grid-cols-[.40fr_1fr] w-full gap-5 lg:gap-5">
-                            <MagicCard particles={true} className="flex flex-col items-start w-full bg-primary/[0.08]">
-                                <div className="bento-card w-full flex-col lg:flex-row gap-6">
-                                    <div className="w-full">
-                                        <Images.image className="w-full h-40 lg:h-auto" />
-                                    </div>
-                                    <div className="flex flex-col mt-auto">
-                                        <h4 className="text-xl font-heading font-medium heading ">
-                                            Generación de imágenes con IA
-                                        </h4>
-                                        <p className="text-sm md:text-base mt-2 text-muted-foreground">
-                                            Crea imágenes impresionantes con herramientas impulsadas por IA en segundos.
-                                        </p>
-                                    </div>
-                                </div>
-                            </MagicCard>
-                            <MagicCard particles={true} className="flex flex-col items-start w-full bg-primary/[0.08]">
-                                <div className="bento-card w-full flex-col lg:flex-row gap-6">
-                                    <div className="w-full">
-                                        <Images.hash className="w-full h-40 lg:h-52" />
-                                    </div>
-                                    <div className="flex flex-col mt-auto">
-                                        <h4 className="text-xl font-heading font-medium heading ">
-                                            Sugerencias de hashtags
-                                        </h4>
-                                        <p className="text-sm md:text-base mt-2 text-muted-foreground">
-                                            Obtén sugerencias de hashtags basadas en tu contenido y audiencia para aumentar tu alcance y engagement.
-                                        </p>
-                                    </div>
-                                </div>
-                            </MagicCard>
-                        </div>
-                    </Container>
-                </div>
+                        </MagicCard>
+                    </motion.div>
+                </Container>
             </div>
         </div>
     )

@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { CalendarRangeIcon, CircleHelp, HashIcon, Newspaper, UsersIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 import Icons from "../global/icons";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface Props {
     title: string;
@@ -13,20 +14,24 @@ interface Props {
     icon: React.ReactNode;
 }
 
-const Menu = () => {
+type MenuProps = { lang?: string };
+
+const Menu: React.FC<MenuProps> = (_props) => {
+    const { t, isLoaded } = useTranslation();
+    
     return (
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
                     <Link href="/docs" legacyBehavior passHref>
                         <NavigationMenuLink className="h-10 px-4 py-2 text-sm font-normal rounded-md text-muted-foreground hover:text-foreground w-max hover:bg-none">
-                            How it works
+                            {isLoaded ? t('navbar.howItWorks') : 'Cómo funciona'}
                         </NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                     <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground">
-                        Features
+                        {isLoaded ? t('navbar.features') : 'Características'}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid rounded-3xl gap-3 p-4 md:w-[400px] lg:w-[500px] xl:w-[550px] lg:grid-cols-[.75fr_1fr]">

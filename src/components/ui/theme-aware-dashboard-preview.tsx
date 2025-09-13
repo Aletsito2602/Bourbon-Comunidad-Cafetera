@@ -2,7 +2,6 @@
 
 import { useTheme } from "next-themes";
 import { cn } from "@/functions";
-import Image from "next/image";
 import Container from "@/components/global/container";
 
 export function ThemeAwareDashboardPreview() {
@@ -36,13 +35,11 @@ export function ThemeAwareDashboardPreview() {
             "shadow-inner"
           ]
         )}>
-          <Image
-            src="/images/dashboard.png"
-            alt="dashboard"
-            width={1920}
-            height={1080}
+          <img
+            src="/images/dashboardb.png"
+            alt="dashboard Bourbon"
             className={cn(
-              "rounded-lg lg:rounded-[20px]",
+              "w-full rounded-lg lg:rounded-[20px]",
               theme === "light" && "opacity-90"
             )}
           />

@@ -3,8 +3,10 @@
 import { cn } from "@/functions";
 import { ArrowRightIcon, XIcon } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from "next/image";
+import { useTheme } from "next-themes";
+import { useTranslation } from "@/hooks/useTranslation";
 import Icons from "../global/icons";
 import Wrapper from "../global/wrapper";
 import { Button } from "../ui/button";
@@ -18,7 +20,8 @@ const Navbar = () => {
     const user = null; // Mock user for development
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [lang, setLang] = useState<string>("es-AR");
+    const { theme } = useTheme();
+    const { language, changeLanguage, t, isLoaded } = useTranslation();
 
     useEffect(() => {
         if (isOpen) {
@@ -35,7 +38,7 @@ const Navbar = () => {
 
     return (
         <div className="relative w-full h-full">
-            <div className="z-[99] fixed pointer-events-none inset-x-0 h-[88px] bg-[rgba(10,10,10,0.8)] backdrop-blur-sm [mask:linear-gradient(to_bottom,#000_20%,transparent_calc(100%-20%))]"></div>
+            <div className="z-[99] fixed pointer-events-none inset-x-0 h-[88px] backdrop-blur-sm [mask:linear-gradient(to_bottom,#000_20%,transparent_calc(100%-20%))] dark:bg-[rgba(10,10,10,0.8)] bg-white/85"></div>
 
             <header
                 className={cn(
@@ -43,12 +46,12 @@ const Navbar = () => {
                     isOpen ? "h-[calc(100%-24px)]" : "h-12"
                 )}
             >
-                <Wrapper className="backdrop-blur-lg rounded-xl lg:rounded-2xl border border-[rgba(124,124,124,0.2)] px- md:px-2 flex items-center justify-start">
+                <Wrapper className="backdrop-blur-lg rounded-xl lg:rounded-2xl border border-[rgba(124,124,124,0.2)] px- md:px-2 flex items-center justify-start bg-white/80 dark:bg-transparent shadow-lg dark:shadow-none">
                     <div className="flex items-center justify-between w-full sticky mt-[7px] lg:mt-auto mb-auto inset-x-0">
                         <div className="flex items-center flex-1 lg:flex-none pl-1">
                             <Link href="/" className="text-lg font-semibold text-foreground">
                                 <Image
-                                    src="/nb/bourbon icon.png"
+                                    src={theme === "light" ? "/nb/bourbon favicon.png" : "/nb/bourbon icon.png"}
                                     alt="Bourbon"
                                     width={24}
                                     height={24}
@@ -57,7 +60,7 @@ const Navbar = () => {
                                 />
                             </Link>
                             <div className="items-center hidden ml-4 lg:flex">
-                                <Menu />
+                                <Menu lang={language} />
                             </div>
                         </div>
                         <div className="items-center flex gap-2 lg:gap-4">
@@ -69,14 +72,30 @@ const Navbar = () => {
                                 </Button>
                             ) : (
                                 <>
-                                    <Button size="sm" variant="tertiary" asChild className="hover:translate-y-0 hover:scale-100">
-                                        <Link href="/auth/signin">
-                                            Iniciar sesión
+                                    <Button
+                                        size="sm"
+                                        variant="tertiary"
+                                        asChild
+                                        className={cn(
+                                            "hover:translate-y-0 hover:scale-100",
+                                            theme === "light" && "bg-teal-500 text-white hover:bg-teal-600 border-teal-500"
+                                        )}
+                                    >
+                                        <Link href="https://app.soybourbon.com">
+                                            {isLoaded ? t('navbar.signIn') : 'Iniciar sesión'}
                                         </Link>
                                     </Button>
-                                    <Button size="sm" variant="white" asChild className="hidden sm:flex">
-                                        <Link href="/auth/signup">
-                                            Comenzar gratis
+                                    <Button
+                                        size="sm"
+                                        variant="white"
+                                        asChild
+                                        className={cn(
+                                            "hidden sm:flex",
+                                            theme === "light" && "bg-teal-500 text-white hover:bg-teal-600 border-teal-500"
+                                        )}
+                                    >
+                                        <Link href="https://app.soybourbon.com/register">
+                                            {isLoaded ? t('navbar.startFree') : 'Comenzar gratis'}
                                             <ArrowRightIcon className="w-4 h-4 ml-2 hidden lg:block" />
                                         </Link>
                                     </Button>
@@ -87,19 +106,19 @@ const Navbar = () => {
                                 <DropdownMenuTrigger asChild>
                                     <Button size="icon" variant="ghost" className="w-9 h-9">
                                         <span className="text-lg" aria-label="Idioma">
-                                            {lang === "es-AR" ? "🇦🇷" : lang === "en-US" ? "🇺🇸" : "🇧🇷"}
+                                            {language === "es-AR" ? "🇦🇷" : language === "en-US" ? "🇺🇸" : "🇧🇷"}
                                         </span>
                                     </Button>
                                 </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end" className="min-w-[10rem]">
-                                    <DropdownMenuItem onClick={() => setLang("es-AR")}>
-                                        <span className="mr-2">🇦🇷</span> Español (AR)
+                                <DropdownMenuContent align="end">
+                                    <DropdownMenuItem onClick={() => changeLanguage("es-AR")}>
+                                        🇦🇷 Español
                                     </DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => setLang("en-US")}>
-                                        <span className="mr-2">🇺🇸</span> English (US)
+                                    <DropdownMenuItem onClick={() => changeLanguage("en-US")}>
+                                        🇺🇸 English
                                     </DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => setLang("pt-BR")}>
-                                        <span className="mr-2">🇧🇷</span> Português (BR)
+                                    <DropdownMenuItem onClick={() => changeLanguage("pt-BR")}>
+                                        🇧🇷 Português
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
