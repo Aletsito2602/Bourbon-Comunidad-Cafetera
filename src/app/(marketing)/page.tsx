@@ -15,8 +15,6 @@ const HomePage = () => {
                 <Container className="py-8 lg:py-20">
                     <Companies />
                 </Container>
-                <Connect />
-                <Features />
                 <Perks />
                 <Pricing />
                 <Reviews />

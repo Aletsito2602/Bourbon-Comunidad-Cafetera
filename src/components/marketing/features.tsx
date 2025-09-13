@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 const Features = () => {
     return (
-        <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full relative">
+        <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full relative" key="features-redesign-v2">
             <DotGridBackground className="-z-10" />
             <Container>
                 <div className="flex flex-col items-center text-center max-w-3xl mx-auto">

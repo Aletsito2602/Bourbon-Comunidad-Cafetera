@@ -7,75 +7,75 @@ type REVIEW = {
 
 export const REVIEWS: REVIEW[] = [
     {
-        name: "Arjun Singh",
-        username: "@arjunsingh",
-        review: "This platform has revolutionized the way I manage my projects. The AI tools are a game-changer!",
+        name: "Carlos Mendoza",
+        username: "@carlosmendoza",
+        review: "Desde que implementamos Luro AI, hemos reducido el desperdicio de café en un 35%. La plataforma es increíblemente intuitiva.",
         img: "https://randomuser.me/api/portraits/men/1.jpg"
     },
     {
-        name: "Priya Nair",
-        username: "@priyanair",
-        review: "Absolutely love the seamless integration with social media. It's made my content creation process so much easier.",
+        name: "María González",
+        username: "@mariagonzalez",
+        review: "Las alertas inteligentes de stock nos han salvado de quedarnos sin productos estrella. Nuestros clientes siempre encuentran lo que buscan.",
         img: "https://randomuser.me/api/portraits/women/2.jpg"
     },
     {
-        name: "Rohan Mehta",
-        username: "@rohanmehta",
-        review: "The features offered here are unmatched. My productivity has soared since I started using this service.",
+        name: "Diego Ramírez",
+        username: "@diegoramirez",
+        review: "La optimización de la carta digital aumentó nuestras ventas un 28%. Los análisis de IA son impresionantes.",
         img: "https://randomuser.me/api/portraits/men/3.jpg"
     },
     {
-        name: "Sneha Patel",
-        username: "@snehapatel",
-        review: "Customer support is top-notch. They’re always ready to assist with any queries I have.",
+        name: "Ana Herrera",
+        username: "@anaherrera",
+        review: "El control de costos en tiempo real nos permite tomar decisiones inmediatas. Hemos mejorado nuestra rentabilidad significativamente.",
         img: "https://randomuser.me/api/portraits/women/4.jpg"
     },
     {
-        name: "Ankit Sharma",
-        username: "@ankitsharma",
-        review: "The customization options available are perfect for my business needs. Highly recommended!",
+        name: "Roberto Silva",
+        username: "@robertosilva",
+        review: "Como dueño de 3 cafeterías, Luro AI me permite gestionar todo desde una sola plataforma. Es una revolución.",
         img: "https://randomuser.me/api/portraits/men/5.jpg"
     },
     {
-        name: "Meera Kapoor",
-        username: "@meerakapoor",
-        review: "The intuitive design and ease of use make this platform stand out. It's a must-have for any business.",
+        name: "Carmen López",
+        username: "@carmenlopez",
+        review: "La calidad de nuestro café ha mejorado notablemente gracias a las recomendaciones de la IA. Nuestros clientes lo notan.",
         img: "https://randomuser.me/api/portraits/women/6.jpg"
     },
     {
-        name: "Vikram Desai",
-        username: "@vikramdesai",
-        review: "From analytics to AI-powered tools, this service covers everything I need to grow my business.",
+        name: "Alejandro Torres",
+        username: "@alejandrotorres",
+        review: "El sistema de fidelización automática ha duplicado nuestros clientes recurrentes. Los resultados hablan por sí solos.",
         img: "https://randomuser.me/api/portraits/men/7.jpg"
     },
     {
-        name: "Anjali Menon",
-        username: "@anjalimenon",
-        review: "I’m impressed with how much value I’m getting at this price point. It's worth every penny!",
+        name: "Lucía Morales",
+        username: "@luciamorales",
+        review: "La relación calidad-precio es excepcional. En 3 meses recuperamos la inversión y seguimos creciendo.",
         img: "https://randomuser.me/api/portraits/women/8.jpg"
     },
     {
-        name: "Karan Gupta",
-        username: "@karangupta",
-        review: "The AI content generation is phenomenal. It saves me hours of work every week.",
+        name: "Fernando Castro",
+        username: "@fernandocastro",
+        review: "Las predicciones de demanda son sorprendentemente precisas. Ya no compramos de más ni nos quedamos cortos.",
         img: "https://randomuser.me/api/portraits/men/9.jpg"
     },
     {
-        name: "Neha Verma",
-        username: "@nehaverma",
-        review: "I love how everything is organized in one place. It makes managing my tasks so much easier.",
+        name: "Patricia Ruiz",
+        username: "@patriciaruiz",
+        review: "El soporte técnico es excepcional. Siempre están disponibles para ayudarnos a optimizar nuestros procesos.",
         img: "https://randomuser.me/api/portraits/women/10.jpg"
     },
     {
-        name: "Siddharth Jain",
-        username: "@siddharthjain",
-        review: "Their platform is robust, and I have seen a significant improvement in my workflow since I started using it.",
+        name: "Javier Ortega",
+        username: "@javierortega",
+        review: "Hemos automatizado gran parte de la gestión de inventario. Ahora podemos enfocarnos en lo que realmente importa: nuestros clientes.",
         img: "https://randomuser.me/api/portraits/men/11.jpg"
     },
     {
-        name: "Divya Iyer",
-        username: "@divyaiyer",
-        review: "Fantastic service! The updates and new features keep getting better and better.",
+        name: "Sofía Vargas",
+        username: "@sofiavargas",
+        review: "La plataforma evoluciona constantemente. Cada actualización trae nuevas funcionalidades que mejoran nuestro negocio.",
         img: "https://randomuser.me/api/portraits/women/12.jpg"
     }
 ];

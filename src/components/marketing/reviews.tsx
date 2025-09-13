@@ -13,12 +13,12 @@ const Reviews = () => {
         <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24  w-full">
             <Container>
                 <div className="flex flex-col items-center text-center max-w-xl mx-auto">
-                    <SectionBadge title="Our Customers" />
+                    <SectionBadge title="Nuestros Clientes" />
                     <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mt-6">
-                        What our customers say
+                        Lo que dicen nuestros clientes
                     </h2>
                     <p className="text-base md:text-lg text-center text-accent-foreground/80 mt-6">
-                        We are proud to have helped thousands of customers across the globe. Here are some of their stories
+                        Estamos orgullosos de haber ayudado a miles de cafeterías en todo el mundo. Estas son algunas de sus historias
                     </p>
                 </div>
             </Container>
