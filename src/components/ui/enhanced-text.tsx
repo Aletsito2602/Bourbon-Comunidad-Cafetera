@@ -18,7 +18,7 @@ export function EnhancedText({
 }: EnhancedTextProps) {
   const { theme } = useTheme();
   
-  const Component = variant as keyof JSX.IntrinsicElements;
+  const Component = variant as React.ElementType;
   
   const baseStyles = {
     h1: "text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight",
