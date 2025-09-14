@@ -10,38 +10,34 @@ import Container from "../global/container";
 import { Button } from "../ui/button";
 import NumberTicker from "../ui/number-ticker";
 import { SectionBadge } from "../ui/section-bade";
-import { DotGridBackground } from "../ui/animated-backgrounds";
+import { useTranslation } from "@/hooks/useTranslation";
 
 type Plan = "monthly" | "yearly";
 
 const Pricing = () => {
+    const { t } = useTranslation();
     return (
         <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24  w-full relative">
             <Container>
                 <div className="flex flex-col items-center text-center max-w-xl mx-auto">
-                    <SectionBadge title="Elige tu plan" />
+                    <SectionBadge title={t('pricing.badge')} />
                     <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mt-6">
-                        Precios simples y transparentes
+                        {t('pricing.title')}
                     </h2>
                     <p className="text-base md:text-lg text-center text-accent-foreground/80 mt-6">
-                        Elige el plan que se adapte a tus necesidades. Sin tarifas ocultas, sin sorpresas.
+                        {t('pricing.description')}
                     </p>
                 </div>
             </Container>
             <div className="mt-8 w-full relative flex flex-col items-center justify-center">
-                <DotGridBackground className="-z-10" />
                 <Container>
                     <Tabs defaultValue="monthly" className="w-full flex flex-col items-center justify-center">
                         <TabsList>
-                            <TabsTrigger value="monthly">
-                                Mensual
-                            </TabsTrigger>
-                            <TabsTrigger value="yearly">
-                                Anual
-                            </TabsTrigger>
+                            <TabsTrigger value="monthly">{t('pricing.monthly')}</TabsTrigger>
+                            <TabsTrigger value="yearly">{t('pricing.yearly')}</TabsTrigger>
                         </TabsList>
                         <TabsContent value="monthly">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-[1400px] mx-auto mt-14 px-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[1600px] mx-auto mt-14 px-4">
                                 {PLANS.map((plan, index) => (
                                     <Plan
                                         key={index}
@@ -53,7 +49,7 @@ const Pricing = () => {
                             </div>
                         </TabsContent>
                         <TabsContent value="yearly">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-[1400px] mx-auto mt-14 px-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[1600px] mx-auto mt-14 px-4">
                                 {PLANS.map((plan, index) => (
                                     <Plan
                                         key={index}
@@ -92,7 +88,7 @@ const Plan = ({
     index: number;
     plan: Plan;
 }) => {
-
+    const { t } = useTranslation();
     const getDisplayedPrice = (plan: string, monthlyPrice: number, yearlyPrice: number) => {
         if (plan === "monthly") {
             return monthlyPrice === 0 ? 0 : monthlyPrice;
@@ -117,7 +113,7 @@ const Plan = ({
                 {id === "pro" && (
                     <div className="max-w-fit min-w-min inline-flex items-center whitespace-nowrap px-1 h-7 rounded-full bg-gradient-to-r from-primary to-violet-500 absolute -top-3 left-1/2 -translate-x-1/2 select-none">
                         <span className="flex-1 text-sm px-2 font-medium bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent bg-[length:250%_100%] animate-background-shine">
-                            Más Popular
+                            {t('pricing.mostPopular')}
                         </span>
                     </div>
                 )}
@@ -138,7 +134,7 @@ const Plan = ({
                             </span>
                             {/* In here 120 * 0.8 = 96 and /12 to get monthly price */}
                             <span className="text-lg text-muted-foreground font-medium font-headin">
-                                por {plan === "monthly" ? "mes" : "mes"}
+                                {t('pricing.perMonth')}
                             </span>
                         </div>
                         <AnimatePresence>

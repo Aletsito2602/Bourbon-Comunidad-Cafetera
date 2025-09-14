@@ -18,6 +18,7 @@ const Providers = ({ children }: Props) => {
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
+            storageKey="theme"
         >
             {children}
         </ThemeProvider>

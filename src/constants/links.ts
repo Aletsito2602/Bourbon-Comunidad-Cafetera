@@ -9,37 +9,37 @@ type Link = {
 export const SIDEBAR_LINKS: Link[] = [
     {
         href: "/dashboard",
-        label: "Dashboard",
+        label: "Panel",
         icon: ChartPieIcon,
     },
     {
         href: "/dashboard/campaigns",
-        label: "Campaigns",
+        label: "Campañas",
         icon: MegaphoneIcon
     },
     {
         href: "/dashboard/analytics",
-        label: "Analytics",
+        label: "Análisis",
         icon: LineChartIcon
     },
     {
         href: "/dashboard/posts",
-        label: "Posts",
+        label: "Publicaciones",
         icon: MessageSquareTextIcon
     },
     {
         href: "/dashboard/engagement",
-        label: "Engagement",
+        label: "Interacción",
         icon: UsersIcon
     },
     {
         href: "/dashboard/billing",
-        label: "Billing",
+        label: "Facturación",
         icon: CreditCardIcon
     },
     {
         href: "/dashboard/settings",
-        label: "Settings",
+        label: "Configuración",
         icon: SettingsIcon
     },
 ];

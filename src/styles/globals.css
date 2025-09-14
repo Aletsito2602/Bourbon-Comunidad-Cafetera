@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevenir flash de contenido sin estilo (FOUC) */
+html {
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 /* @layer base {
   .dark {
     --background: 0 0% 100%;
@@ -98,10 +112,11 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 262 83% 58%;
-    --primary-foreground: 0 0% 93%;
-    --primary-light: 262 84% 66%;
-    --primary-light-foreground: 262 83% 75%;
+    /* Turquoise primary for dark mode */
+    --primary: 172 66% 50%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 172 66% 60%;
+    --primary-light-foreground: 0 0% 98%;
     --secondary: 256 42% 25%;
     --secondary-foreground: 249 94% 93%;
     --muted: 240 3.7% 15.9%;
@@ -112,7 +127,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 262 83% 58%;
+    --ring: 172 66% 50%;
     --radius: 0.5rem;
   }
 }

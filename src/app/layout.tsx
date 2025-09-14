@@ -14,6 +14,30 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <head>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function() {
+                                try {
+                                    var systemIsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                                    var systemTheme = systemIsDark ? 'dark' : 'light';
+                                    var stored = '';
+                                    try { stored = localStorage.getItem('theme') || ''; } catch(_) {}
+                                    var theme = (stored === 'light' || stored === 'dark') ? stored : systemTheme;
+                                    document.documentElement.classList.remove('light', 'dark');
+                                    document.documentElement.classList.add(theme);
+                                    document.documentElement.style.colorScheme = theme;
+                                    document.documentElement.setAttribute('data-theme', theme);
+                                } catch (e) {
+                                    document.documentElement.classList.add('light');
+                                    document.documentElement.style.colorScheme = 'light';
+                                }
+                            })();
+                        `,
+                    }}
+                />
+            </head>
             <body
                 className={cn(
                     "min-h-screen bg-background text-foreground antialiased font-default overflow-x-hidden !scrollbar-hide",

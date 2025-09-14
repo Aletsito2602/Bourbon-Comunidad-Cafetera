@@ -1,24 +1,28 @@
+"use client";
+
 import { REVIEWS } from "@/constants";
 import Container from "../global/container";
 import Marquee from "../ui/marquee";
 import { SectionBadge } from "../ui/section-bade";
 import { FloatingDotsBackground } from "../ui/animated-backgrounds";
 import Image from "next/image";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const firstRow = REVIEWS.slice(0, REVIEWS.length / 2);
 const secondRow = REVIEWS.slice(REVIEWS.length / 2);
 
 const Reviews = () => {
+    const { t } = useTranslation();
     return (
         <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24  w-full">
             <Container>
                 <div className="flex flex-col items-center text-center max-w-xl mx-auto">
-                    <SectionBadge title="Nuestros Clientes" />
+                    <SectionBadge title={t('reviews.badge')} />
                     <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mt-6">
-                        Lo que dicen nuestros clientes
+                        {t('reviews.title')}
                     </h2>
                     <p className="text-base md:text-lg text-center text-accent-foreground/80 mt-6">
-                        Estamos orgullosos de haber ayudado a miles de cafeterías en todo el mundo. Estas son algunas de sus historias
+                        {t('reviews.subtitle')}
                     </p>
                 </div>
             </Container>
@@ -57,7 +61,7 @@ const ReviewCard = ({
     review: string;
 }) => {
     return (
-        <figure className="relative w-64 cursor-pointer overflow-hidden rounded-xl border border-foreground/5 bg-neutral-50/[.05] hover:bg-foreground/10 p-4 transition-all duration-300 ease-in-out">
+        <figure className="relative w-64 cursor-pointer overflow-hidden rounded-xl border border-foreground/10 bg-background/80 backdrop-blur-sm hover:bg-foreground/5 p-4 transition-all duration-300 ease-in-out shadow-sm">
             <div className="flex flex-row items-center gap-2">
                 <Image className="rounded-full" width="32" height="32" alt="" src={img} />
                 <div className="flex flex-col">

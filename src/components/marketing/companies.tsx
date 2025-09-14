@@ -1,4 +1,7 @@
+"use client";
+
 import Marquee from "../ui/marquee";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Companies = () => {
     const coffeeShops = [
@@ -8,12 +11,12 @@ const Companies = () => {
         { name: "Kaizen Coffee", src: "/cafeterias/kaizen_white_hd.png" },
     ];
 
+    const { t } = useTranslation();
+
     return (
         <div className="flex w-full py-20">
             <div className="flex flex-col items-center justify-center text-center w-full py-2">
-                <h2 className="text-xl heading">
-                    Cafeterías que confían
-                </h2>
+                <h2 className="text-xl heading">{t('companies.title')}</h2>
                 <div className="mt-16 w-full relative overflow-hidden">
                     <Marquee pauseOnHover className="[--duration:20s]">
                         <div className="flex gap-12 md:gap-16 items-center">

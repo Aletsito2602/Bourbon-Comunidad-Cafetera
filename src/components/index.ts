@@ -18,6 +18,9 @@ import Pricing from "./marketing/pricing";
 import Reviews from "./marketing/reviews";
 import CTA from "./marketing/cta";
 import Footer from "./marketing/footer";
+import MobileMenu from "./marketing/mobile-menu";
+import Menu from "./marketing/menu";
+import Rewards from "./marketing/rewards";
 
 export {
     Icons,
@@ -28,13 +31,16 @@ export {
     Hero,
     Navbar,
     Companies,
-    Features,
     Connect,
+    Features,
     Perks,
     Pricing,
     Reviews,
     CTA,
     Footer,
+    MobileMenu,
+    Menu,
+    Rewards,
     SignInForm,
     SignUpForm,
     Providers,

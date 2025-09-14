@@ -1,3 +1,5 @@
+"use client";
+
 import { FOOTER_LINKS } from "@/constants";
 import Link from "next/link";
 import Container from "../global/container";
@@ -6,8 +8,11 @@ import Image from "next/image";
 import Wrapper from "../global/wrapper";
 import { Button } from "../ui/button";
 import { Particles } from "../ui/particles";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Footer = () => {
+    const { t } = useTranslation();
+    const year = new Date().getFullYear();
     return (
         <footer className="w-full py-10 relative">
             <Container>
@@ -34,11 +39,11 @@ const Footer = () => {
                             </span>
                         </div>
                         <p className="text-base max-w mt-4">
-                            Potencia tu negocio con nuestras herramientas de IA.
+                            {t('footer.tagline')}
                         </p>
                         <Button className="mt-8">
                             <Link href="/app">
-                                Comenzar gratis
+                                {t('footer.startFree')}
                             </Link>
                         </Button>
                     </div>
@@ -65,7 +70,7 @@ const Footer = () => {
             <Container>
                 <Wrapper className="pt-10 flex items-center justify-between relative">
                     <p className="text-sm text-secondary-foreground">
-                        &copy; {new Date().getFullYear()} Bourbon. Todos los derechos reservados.
+                        &copy; {year} {t('footer.copyright')}
                     </p>
                     <div className="flex items-center gap-4">
                         <Link href="#" className="p-1">
