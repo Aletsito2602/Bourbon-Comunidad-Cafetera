@@ -10,7 +10,7 @@ export function ThemeAwareDashboardPreview() {
   return (
     <Container delay={0.3}>
       <div className={cn(
-        "relative mx-auto max-w-7xl rounded-xl lg:rounded-[32px] border p-2 backdrop-blur-lg md:p-4 mt-12",
+        "relative mx-auto max-w-7xl rounded-[15px] border p-1 backdrop-blur-lg md:p-2 mt-12",
         // Estilos para modo oscuro (original)
         theme === "dark" && [
           "border-neutral-200/50 border-neutral-700 bg-neutral-800/50"
@@ -28,7 +28,7 @@ export function ThemeAwareDashboardPreview() {
         )}></div>
 
         <div className={cn(
-          "rounded-lg lg:rounded-[24px] border p-2",
+          "rounded-[15px] border p-1",
           theme === "dark" && "border-neutral-700 bg-black",
           theme === "light" && [
             "border-teal-100/40 bg-white/60 backdrop-blur-xl",
@@ -39,7 +39,7 @@ export function ThemeAwareDashboardPreview() {
             src="/images/dashboardb.png"
             alt="dashboard Bourbon"
             className={cn(
-              "w-full rounded-lg lg:rounded-[20px]",
+              "w-full rounded-[15px]",
               theme === "light" && "opacity-90"
             )}
           />

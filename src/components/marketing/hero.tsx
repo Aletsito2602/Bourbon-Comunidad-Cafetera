@@ -27,9 +27,9 @@ const Hero = () => {
                     </div>
                     <span className="inline-flex items-center justify-center gap-2 animate-text-gradient animate-background-shine bg-gradient-to-r from-[#b2a8fd] via-[#8678f9] to-[#c7d2fe] bg-[200%_auto] bg-clip-text text-sm text-transparent">
                         {isLoaded ? t('hero.badge') : 'Construido para el futuro'}
-                        <span className="text-xs text-secondary-foreground px-1.5 py-0.5 rounded-full bg-gradient-to-b from-foreground/20 to-foreground/10 flex items-center justify-center">
+                        <span className="text-xs text-white dark:text-secondary-foreground px-1.5 py-0.5 rounded-full bg-gradient-to-b from-foreground/20 to-foreground/10 flex items-center justify-center">
                             {isLoaded ? t('hero.badgeNews') : 'Novedades'}
-                            <ArrowRightIcon className="w-3.5 h-3.5 ml-1 text-foreground/50" />
+                            <ArrowRightIcon className="w-3.5 h-3.5 ml-1 text-white/70 dark:text-foreground/50" />
                         </span>
                     </span>
                 </div>

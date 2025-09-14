@@ -46,19 +46,19 @@ const Menu: React.FC<MenuProps> = (_props) => {
                                             Luro AI
                                         </div>
                                         <p className="text-sm text-muted-foreground">
-                                            Your ultimate social media management tool
+                                            Tu plataforma de gestión inteligente para cafeterías
                                         </p>
                                     </Link>
                                 </NavigationMenuLink>
                             </li>
-                            <Item title="Content Calendar" href="/features/content-calendar" icon={<CalendarRangeIcon className="w-5 h-5" />}>
-                                Plan and visualize your content strategy.
+                            <Item title="Control de Inventario" href="/features/inventory-control" icon={<CalendarRangeIcon className="w-5 h-5" />}>
+                                Gestiona tu stock en tiempo real con alertas inteligentes.
                             </Item>
-                            <Item title="Hashtag Manager" href="/features/hashtag-manager" icon={<HashIcon className="w-5 h-5" />}>
-                                Research and track trending hashtags.
+                            <Item title="Análisis de Ventas" href="/features/sales-analytics" icon={<HashIcon className="w-5 h-5" />}>
+                                Optimiza tu carta y aumenta la rentabilidad.
                             </Item>
-                            <Item title="Competitor Analysis" href="/features/competitor-analysis" icon={<UsersIcon className="w-5 h-5" />}>
-                                Monitor and analyze competitor performance.
+                            <Item title="Control de Costos" href="/features/cost-control" icon={<UsersIcon className="w-5 h-5" />}>
+                                Calcula automáticamente costos reales y optimiza precios.
                             </Item>
                         </ul>
                     </NavigationMenuContent>
@@ -66,28 +66,28 @@ const Menu: React.FC<MenuProps> = (_props) => {
                 <NavigationMenuItem>
                     <Link href="/pricing" legacyBehavior passHref>
                         <NavigationMenuLink className="h-10 px-4 py-2 text-sm font-normal rounded-md text-muted-foreground hover:text-foreground w-max hover:bg-none">
-                            Pricing
+                            Precios
                         </NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                     <Link href="/integrations" legacyBehavior passHref>
                         <NavigationMenuLink className="h-10 px-4 py-2 text-sm font-normal rounded-md text-muted-foreground hover:text-foreground w-max hover:bg-none">
-                            Integrations
+                            Integraciones
                         </NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                     <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground">
-                        Resources
+                        Recursos
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid w-[400px] gap-3 p-4 md:w-[400px] md:grid-cols-2 lg:w-[500px] xl:w-[500px]">
                             <Item title="Blog" href="/resources/blog" icon={<Newspaper className="w-5 h-5" />}>
-                                Read our latest articles and updates.
+                                Artículos y consejos para optimizar tu cafetería.
                             </Item>
-                            <Item title="Support" href="/resources/support" icon={<CircleHelp className="w-5 h-5" />}>
-                                Get help with any issues you may have.
+                            <Item title="Soporte" href="/resources/support" icon={<CircleHelp className="w-5 h-5" />}>
+                                Obtén ayuda técnica y consultoría especializada.
                             </Item>
                         </ul>
                     </NavigationMenuContent>

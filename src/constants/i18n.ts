@@ -149,73 +149,73 @@ export const translations = {
   "en-US": {
     // Navbar
     navbar: {
-      howItWorks: "How it works",
-      features: "Features",
-      pricing: "Pricing",
-      integrations: "Integrations",
-      resources: "Resources",
-      affiliateSystem: "Affiliate System",
-      community: "Community",
-      signIn: "Sign In",
-      startFree: "Start Free",
-      join: "Join",
+      howItWorks: "Cómo funciona",
+      features: "Características",
+      pricing: "Precios",
+      integrations: "Integraciones",
+      resources: "Recursos",
+      affiliateSystem: "Sistema de afiliados",
+      community: "Comunidad",
+      signIn: "Iniciar sesión",
+      startFree: "Comenzar gratis",
+      join: "Unirse",
     },
     
     // Hero
     hero: {
-      badge: "Built for the future",
-      badgeNews: "News",
-      title: "The intelligent CRM for\n specialty coffee shops",
-      description: "Optimize costs, control stock and ingredients, standardize recipes and improve the quality of each cup.",
-      descriptionExtended: "Bourbon integrates customer loyalty, digital menu, website and AI analytics to grow your coffee shop.",
-      startFree: "Start Free",
-      viewFeatures: "View Features",
+      badge: "Construido para el futuro",
+      badgeNews: "Noticias",
+      title: "El CRM inteligente para\ncafeterías de especialidad",
+      description: "Optimiza costos, controla stock e ingredientes, estandariza recetas y mejora la calidad de cada taza.",
+      descriptionExtended: "Bourbon integra fidelización de clientes, menú digital, sitio web y análisis con IA para hacer crecer tu cafetería.",
+      startFree: "Comenzar gratis",
+      viewFeatures: "Ver características",
     },
     
     // Perks/Benefits
     perks: {
-      badge: "Benefits",
-      title: "Everything your coffee shop needs",
-      description: "Live order system, standardized and analyzed recipes, supplier control, stock, employees and revenue. Includes own website, affiliate system and loyalty, according to plan.",
+      badge: "Beneficios",
+      title: "Todo lo que tu cafetería necesita",
+      description: "Sistema de pedidos en vivo, recetas estandarizadas y analizadas, control de proveedores, stock, empleados e ingresos. Incluye sitio web propio, sistema de afiliados y fidelización, según el plan.",
       groups: {
         operation: {
-          title: "Operations",
-          description: "Order and channel management",
+          title: "Operaciones",
+          description: "Gestión de pedidos y canales",
           items: {
-            liveOrders: { title: "Live Orders", description: "Dine-in, bar and take-away with status and timing." },
-            qrOrders: { title: "QR Orders", description: "Order from table or bar and track status." },
-            omnichannel: { title: "Omnichannel", description: "Unify channels and price lists by schedule." },
-            aiAgent: { title: "AI Agent", description: "Automated support and order taking 24/7." },
+            liveOrders: { title: "Pedidos en Vivo", description: "Salón, barra y para llevar con estado y tiempos." },
+            qrOrders: { title: "Pedidos QR", description: "Pedidos desde mesa o barra y seguimiento de estado." },
+            omnichannel: { title: "Omnicanal", description: "Unifica canales y listas de precios por horario." },
+            aiAgent: { title: "Agente IA", description: "Soporte automatizado y toma de pedidos 24/7." },
           }
         },
         product: {
-          title: "Product",
-          description: "Recipes, costs and quality",
+          title: "Producto",
+          description: "Recetas, costos y calidad",
           items: {
-            recipes: { title: "Recipes", description: "Weights, steps, waste and costs per drink." },
-            analysis: { title: "Analysis", description: "Margin, suggested pricing and batch consistency." },
-            batches: { title: "Batches", description: "Traceability and recipe consumption in real time." },
-            pricing: { title: "Pricing", description: "Lists and rules by channel or schedule." },
+            recipes: { title: "Recetas", description: "Pesos, pasos, desperdicios y costos por bebida." },
+            analysis: { title: "Análisis", description: "Margen, precios sugeridos y consistencia de lotes." },
+            batches: { title: "Lotes", description: "Trazabilidad y consumo de recetas en tiempo real." },
+            pricing: { title: "Precios", description: "Listas y reglas por canal u horario." },
           }
         },
         supply: {
-          title: "Supply Chain",
-          description: "Suppliers and stock",
+          title: "Cadena de Suministro",
+          description: "Proveedores y stock",
           items: {
-            suppliers: { title: "Suppliers", description: "Purchase orders and price lists." },
-            stock: { title: "Stock", description: "Warehouses, stockouts and smart alerts." },
-            onlineMenu: { title: "Online Menu", description: "Photos and descriptions per drink (QR)." },
-            affiliates: { title: "Affiliates", description: "Commissions for referrals from your panel." },
+            suppliers: { title: "Proveedores", description: "Órdenes de compra y listas de precios." },
+            stock: { title: "Stock", description: "Almacenes, faltantes y alertas inteligentes." },
+            onlineMenu: { title: "Menú Online", description: "Fotos y descripciones por bebida (QR)." },
+            affiliates: { title: "Afiliados", description: "Comisiones por referencias desde tu panel." },
           }
         },
         business: {
-          title: "Business",
-          description: "Team, sales and loyalty",
+          title: "Negocio",
+          description: "Equipo, ventas y fidelización",
           items: {
-            team: { title: "Team & Roles", description: "Role permissions and productivity per position." },
-            revenue: { title: "Revenue", description: "Sales, average ticket and profitability." },
-            website: { title: "Website", description: "Own page integrated to your menu." },
-            loyalty: { title: "Loyalty", description: "Points, coupons and benefits." },
+            team: { title: "Equipo y Roles", description: "Permisos de roles y productividad por posición." },
+            revenue: { title: "Ingresos", description: "Ventas, ticket promedio y rentabilidad." },
+            website: { title: "Sitio Web", description: "Página propia integrada a tu menú." },
+            loyalty: { title: "Fidelización", description: "Puntos, cupones y beneficios." },
           }
         }
       }
@@ -223,63 +223,63 @@ export const translations = {
     
     // Pricing
     pricing: {
-      badge: "Choose your plan",
-      title: "Simple and transparent pricing",
-      description: "Choose the plan that fits your needs. No hidden fees, no surprises.",
-      monthly: "Monthly",
-      yearly: "Yearly",
-      perMonth: "per month",
-      mostPopular: "Most Popular",
+      badge: "Elige tu plan",
+      title: "Precios simples y transparentes",
+      description: "Elige el plan que se adapte a tus necesidades. Sin tarifas ocultas, sin sorpresas.",
+      monthly: "Mensual",
+      yearly: "Anual",
+      perMonth: "por mes",
+      mostPopular: "Más Popular",
       plans: {
         barista: {
           title: "Barista",
-          description: "The essentials to get started: online menu and basic control.",
-          button: "Choose Barista",
+          description: "Lo esencial para comenzar: menú online y control básico.",
+          button: "Elegir Barista",
           features: [
-            "Online menu with QR",
-            "Basic stock control",
-            "Simple orders (bar/dine-in)",
-            "1 location / 3 users",
-            "Basic reports"
+            "Menú online con QR",
+            "Control básico de stock",
+            "Pedidos simples (barra/salón)",
+            "1 local / 3 usuarios",
+            "Reportes básicos"
           ]
         },
         specialty: {
           title: "Specialty",
-          description: "Scale your operation with recipes and analytics.",
-          button: "Choose Specialty",
+          description: "Escala tu operación con recetas y análisis.",
+          button: "Elegir Specialty",
           features: [
-            "Standardized recipes",
-            "Costs and suggested pricing",
-            "Stock by batches and alerts",
-            "Loyalty (points and coupons)",
-            "2 locations / 6 users",
-            "AI analytics"
+            "Recetas estandarizadas",
+            "Costos y precios sugeridos",
+            "Stock por lotes y alertas",
+            "Fidelización (puntos y cupones)",
+            "2 locales / 6 usuarios",
+            "Análisis con IA"
           ]
         },
         roaster: {
           title: "Roaster",
-          description: "Multi-channel operation and automations.",
-          button: "Choose Roaster",
+          description: "Operación multicanal y automatizaciones.",
+          button: "Elegir Roaster",
           features: [
-            "Omnichannel orders (dine-in, bar, take-away)",
-            "Price lists by channel and schedule",
-            "24/7 AI customer service agent",
-            "Own affiliate system",
-            "Integrations (printers, WhatsApp, etc.)",
-            "5 locations / 12 users",
-            "Advanced dashboards"
+            "Pedidos omnicanal (salón, barra, para llevar)",
+            "Listas de precios por canal y horario",
+            "Agente de atención al cliente IA 24/7",
+            "Sistema de afiliados propio",
+            "Integraciones (impresoras, WhatsApp, etc.)",
+            "5 locales / 12 usuarios",
+            "Dashboards avanzados"
           ]
         },
         reserve: {
           title: "Reserve",
-          description: "Custom implementation for chains.",
-          button: "Contact Sales",
+          description: "Implementación personalizada para cadenas.",
+          button: "Contactar Ventas",
           features: [
-            "Unlimited locations and users",
-            "Dedicated onboarding and success",
-            "SSO and advanced security",
-            "Custom workflows and reports",
-            "Custom integrations"
+            "Locales y usuarios ilimitados",
+            "Onboarding dedicado y éxito",
+            "SSO y seguridad avanzada",
+            "Flujos de trabajo y reportes personalizados",
+            "Integraciones personalizadas"
           ]
         }
       }
@@ -287,7 +287,7 @@ export const translations = {
     
     // Companies
     companies: {
-      title: "Coffee shops that trust us"
+      title: "Cafeterías que confían en nosotros"
     }
   },
   

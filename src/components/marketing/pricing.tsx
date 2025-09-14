@@ -41,7 +41,7 @@ const Pricing = () => {
                             </TabsTrigger>
                         </TabsList>
                         <TabsContent value="monthly">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl mx-auto mt-14">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-[1400px] mx-auto mt-14 px-4">
                                 {PLANS.map((plan, index) => (
                                     <Plan
                                         key={index}
@@ -53,7 +53,7 @@ const Pricing = () => {
                             </div>
                         </TabsContent>
                         <TabsContent value="yearly">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-7xl mx-auto mt-14">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-[1400px] mx-auto mt-14 px-4">
                                 {PLANS.map((plan, index) => (
                                     <Plan
                                         key={index}

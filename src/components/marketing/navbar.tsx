@@ -115,7 +115,7 @@ const Navbar = () => {
                                         🇦🇷 Español
                                     </DropdownMenuItem>
                                     <DropdownMenuItem onClick={() => changeLanguage("en-US")}>
-                                        🇺🇸 English
+                                        🇺🇸 Inglés
                                     </DropdownMenuItem>
                                     <DropdownMenuItem onClick={() => changeLanguage("pt-BR")}>
                                         🇧🇷 Português

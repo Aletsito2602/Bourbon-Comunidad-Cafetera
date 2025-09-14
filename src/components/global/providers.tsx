@@ -15,7 +15,7 @@ const Providers = ({ children }: Props) => {
         // <QueryClientProvider client={client}>
         <ThemeProvider
             attribute="class"
-            defaultTheme="light"
+            defaultTheme="system"
             enableSystem
             disableTransitionOnChange
         >

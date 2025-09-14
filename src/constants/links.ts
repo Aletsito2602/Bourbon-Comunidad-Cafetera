@@ -46,40 +46,30 @@ export const SIDEBAR_LINKS: Link[] = [
 
 export const FOOTER_LINKS = [
     {
-        title: "Product",
+        title: "Producto",
         links: [
-            { name: "Home", href: "/" },
-            { name: "Features", href: "/" },
-            { name: "Pricing", href: "/" },
-            { name: "Contact", href: "/" },
-            { name: "Download", href: "/" },
+            { name: "Inicio", href: "/" },
+            { name: "Características", href: "/features" },
+            { name: "Precios", href: "/pricing" },
+            { name: "Contacto", href: "/contact" },
+            { name: "Descargar", href: "/download" },
         ],
     },
     {
-        title: "Resources",
+        title: "Recursos",
         links: [
             { name: "Blog", href: "/blog" },
-            { name: "Help Center", href: "/help-center" },
-            { name: "Community", href: "/community" },
-            { name: "Guides", href: "/guides" },
+            { name: "Centro de Ayuda", href: "/help-center" },
+            { name: "Comunidad", href: "/community" },
+            { name: "Guías", href: "/guides" },
         ],
     },
     {
         title: "Legal",
         links: [
-            { name: "Privacy", href: "/privacy" },
-            { name: "Terms", href: "/terms" },
+            { name: "Privacidad", href: "/privacy" },
+            { name: "Términos", href: "/terms" },
             { name: "Cookies", href: "/cookies" },
-        ],
-    },
-    {
-        title: "Developers",
-        links: [
-            { name: "API Docs", href: "/api-docs" },
-            { name: "SDKs", href: "/sdks" },
-            { name: "Tools", href: "/tools" },
-            { name: "Open Source", href: "/open-source" },
-            { name: "Changelog", href: "/changelog" },
         ],
     },
 ];
